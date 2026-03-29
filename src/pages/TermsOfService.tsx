@@ -20,7 +20,7 @@ const TermsOfService = () => (
         <p>By accessing and using this website and registering for our webinar, you agree to be bound by these Terms of Service. If you do not agree, please do not use our services.</p>
 
         <h2>2. Webinar Registration</h2>
-        <p>Registration for our webinar is free. By registering, you agree to provide accurate information and consent to receiving communications related to the event.</p>
+        <p>By registering for our webinar, you agree to provide accurate information and consent to receiving communications related to the event.</p>
 
         <h2>3. Intellectual Property</h2>
         <p>All content presented during the webinar, including but not limited to slides, recordings, materials, and methodologies, is the intellectual property of Clone Yourself and may not be reproduced, distributed, or used commercially without prior written permission.</p>

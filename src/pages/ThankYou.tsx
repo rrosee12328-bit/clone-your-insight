@@ -47,7 +47,7 @@ const ThankYou = () => {
   };
 
   const shareUrl = window.location.origin;
-  const shareText = `I just signed up for "${WEBINAR_TITLE}" — a free live webinar on using AI to multiply your expertise. Join me!`;
+  const shareText = `I just signed up for "${WEBINAR_TITLE}" — a live webinar on using AI to multiply your expertise. Join me!`;
 
   return (
     <div className="min-h-screen bg-background flex items-center justify-center px-4 py-16">
