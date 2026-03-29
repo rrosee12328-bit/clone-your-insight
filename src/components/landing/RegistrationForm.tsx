@@ -112,7 +112,11 @@ const RegistrationForm = () => {
                     </FormControl>
                     <div className="space-y-1 leading-none">
                       <FormLabel className="text-sm text-muted-foreground font-normal cursor-pointer">
-                        I agree to receive webinar reminders and related communications. You can
+                        I agree to the{" "}
+                        <a href="/terms" target="_blank" className="text-primary underline hover:text-primary/80">Terms of Service</a>
+                        {" "}and{" "}
+                        <a href="/privacy" target="_blank" className="text-primary underline hover:text-primary/80">Privacy Policy</a>
+                        , and consent to receive webinar reminders and related communications. You can
                         unsubscribe at any time.
                       </FormLabel>
                       <FormMessage />
