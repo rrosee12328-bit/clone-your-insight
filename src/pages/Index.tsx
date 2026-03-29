@@ -14,7 +14,7 @@ const Index = () => (
   <div className="min-h-screen bg-background">
     <StickyNav />
     <Hero />
-    <ProblemSection />
+    <SolutionSection />
     <SolutionSection />
     <CTABreak heading="Don't Miss This Free Masterclass" />
     <WhatYoullLearn />
