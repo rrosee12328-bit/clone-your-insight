@@ -33,8 +33,10 @@ const WhatYoullLearn = () => (
         transition={{ duration: 0.6 }}
         className="text-center mb-16"
       >
-        <p className="text-sm sm:text-base italic text-muted-foreground/80 max-w-2xl mx-auto mb-4 leading-relaxed">
-          Every week there's a new AI tool. Every day something changes. And somehow you're still not seeing real results from any of it.
+        <p className="text-base sm:text-lg md:text-xl italic max-w-2xl mx-auto mb-6 leading-relaxed">
+          <span className="text-foreground/90">Every week there's a new AI tool.</span>{" "}
+          <span className="text-foreground/90">Every day something changes.</span>{" "}
+          <span className="text-primary font-medium">And somehow you're still not seeing real results from any of it.</span>
         </p>
         <h2 className="text-3xl sm:text-5xl font-bold">What You'll Learn In This Masterclass:</h2>
       </motion.div>
