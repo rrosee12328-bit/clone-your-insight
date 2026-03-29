@@ -7,13 +7,33 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { toast } from "sonner";
 
+const focusOptions = [
+  "Growing my business and getting more clients",
+  "Creating content and building my audience",
+  "Saving time and getting out of the day-to-day",
+  "Turning my knowledge into a product or offer",
+] as const;
+
+const aiLevelOptions = [
+  "I use it here and there but I know I'm not getting the most out of it",
+  "I've tried it but the results feel generic and not specific to my business",
+  "I feel like every time I figure it out, something new drops and I'm behind again",
+  "I honestly don't know where to start or what tools actually matter",
+  "I use it regularly but I want to build real systems, not just prompts",
+] as const;
+
 const formSchema = z.object({
-  name: z.string().trim().min(1, "Name is required").max(100, "Name is too long"),
-  email: z.string().trim().email("Please enter a valid email").max(255, "Email is too long"),
-  consent: z.boolean().refine((v) => v === true, "You must agree to receive communications"),
+  firstName: z.string().trim().min(1, "First name is required").max(100, "Too long"),
+  lastName: z.string().trim().min(1, "Last name is required").max(100, "Too long"),
+  email: z.string().trim().email("Please enter a valid email").max(255, "Too long"),
+  phone: z.string().trim().min(1, "Phone number is required").max(20, "Too long"),
+  focus: z.string().min(1, "Please select your main focus"),
+  aiLevel: z.string().min(1, "Please select where you are with AI"),
+  consent: z.boolean().refine((v) => v === true, "You must agree to continue"),
 });
 
 type FormValues = z.infer<typeof formSchema>;
@@ -24,15 +44,21 @@ const RegistrationForm = () => {
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
-    defaultValues: { name: "", email: "", consent: false },
+    defaultValues: {
+      firstName: "",
+      lastName: "",
+      email: "",
+      phone: "",
+      focus: "",
+      aiLevel: "",
+      consent: false,
+    },
   });
 
   const onSubmit = async (data: FormValues) => {
     setIsSubmitting(true);
     try {
-      // TODO: Connect to Supabase once Cloud is enabled
       console.log("Registration:", data);
-      // Simulate a brief delay
       await new Promise((r) => setTimeout(r, 600));
       toast.success("You're registered! Check your email for confirmation.");
       navigate("/thank-you");
@@ -62,62 +88,138 @@ const RegistrationForm = () => {
         <div className="p-6 sm:p-8 rounded-xl border border-border bg-card/50 backdrop-blur-sm">
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
-              <FormField
-                control={form.control}
-                name="name"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>First Name</FormLabel>
-                    <FormControl>
-                      <Input
-                        placeholder="Your first name"
-                        className="bg-secondary/50 border-border"
-                        {...field}
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+              {/* First & Last Name */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <FormField
+                  control={form.control}
+                  name="firstName"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>First Name *</FormLabel>
+                      <FormControl>
+                        <Input placeholder="First name" className="bg-secondary/50 border-border" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="lastName"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Last Name *</FormLabel>
+                      <FormControl>
+                        <Input placeholder="Last name" className="bg-secondary/50 border-border" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </div>
 
+              {/* Email */}
               <FormField
                 control={form.control}
                 name="email"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Email Address</FormLabel>
+                    <FormLabel>Email Address *</FormLabel>
                     <FormControl>
-                      <Input
-                        type="email"
-                        placeholder="you@example.com"
-                        className="bg-secondary/50 border-border"
-                        {...field}
-                      />
+                      <Input type="email" placeholder="you@example.com" className="bg-secondary/50 border-border" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
                 )}
               />
 
+              {/* Phone */}
+              <FormField
+                control={form.control}
+                name="phone"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Phone Number *</FormLabel>
+                    <FormControl>
+                      <Input type="tel" placeholder="(555) 123-4567" className="bg-secondary/50 border-border" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              {/* Focus Question */}
+              <FormField
+                control={form.control}
+                name="focus"
+                render={({ field }) => (
+                  <FormItem className="space-y-3">
+                    <FormLabel>What is your main focus right now? *</FormLabel>
+                    <FormControl>
+                      <RadioGroup onValueChange={field.onChange} value={field.value} className="space-y-2">
+                        {focusOptions.map((option) => (
+                          <label
+                            key={option}
+                            className="flex items-start space-x-3 rounded-lg border border-border p-3 cursor-pointer hover:bg-secondary/30 transition-colors has-[data-state=checked]:border-primary/50 has-[data-state=checked]:bg-primary/5"
+                          >
+                            <RadioGroupItem value={option} className="mt-0.5 shrink-0" />
+                            <span className="text-sm leading-snug">{option}</span>
+                          </label>
+                        ))}
+                      </RadioGroup>
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              {/* AI Level Question */}
+              <FormField
+                control={form.control}
+                name="aiLevel"
+                render={({ field }) => (
+                  <FormItem className="space-y-3">
+                    <FormLabel>When it comes to AI, where are you right now? *</FormLabel>
+                    <FormControl>
+                      <RadioGroup onValueChange={field.onChange} value={field.value} className="space-y-2">
+                        {aiLevelOptions.map((option) => (
+                          <label
+                            key={option}
+                            className="flex items-start space-x-3 rounded-lg border border-border p-3 cursor-pointer hover:bg-secondary/30 transition-colors has-[data-state=checked]:border-primary/50 has-[data-state=checked]:bg-primary/5"
+                          >
+                            <RadioGroupItem value={option} className="mt-0.5 shrink-0" />
+                            <span className="text-sm leading-snug">{option}</span>
+                          </label>
+                        ))}
+                      </RadioGroup>
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              {/* Consent */}
               <FormField
                 control={form.control}
                 name="consent"
                 render={({ field }) => (
                   <FormItem className="flex flex-row items-start space-x-3 space-y-0">
                     <FormControl>
-                      <Checkbox
-                        checked={field.value}
-                        onCheckedChange={field.onChange}
-                      />
+                      <Checkbox checked={field.value} onCheckedChange={field.onChange} />
                     </FormControl>
                     <div className="space-y-1 leading-none">
                       <FormLabel className="text-sm text-muted-foreground font-normal cursor-pointer">
-                        I agree to the{" "}
-                        <a href="/terms" target="_blank" className="text-primary underline hover:text-primary/80">Terms of Service</a>
-                        {" "}and{" "}
-                        <a href="/privacy" target="_blank" className="text-primary underline hover:text-primary/80">Privacy Policy</a>
-                        , and consent to receive webinar reminders and related communications. You can
-                        unsubscribe at any time.
+                        I agree to receive emails and SMS messages from Vektiss regarding this webinar,
+                        future trainings, and offers. I understand I can opt out at any time by replying
+                        STOP. Msg &amp; data rates may apply. View our{" "}
+                        <a href="/terms" target="_blank" className="text-primary underline hover:text-primary/80">
+                          Terms of Service
+                        </a>{" "}
+                        and{" "}
+                        <a href="/privacy" target="_blank" className="text-primary underline hover:text-primary/80">
+                          Privacy Policy
+                        </a>
+                        .
                       </FormLabel>
                       <FormMessage />
                     </div>
@@ -128,10 +230,10 @@ const RegistrationForm = () => {
               <Button
                 type="submit"
                 size="lg"
-                className="w-full text-base py-6 bg-primary hover:bg-primary/90 shadow-lg shadow-primary/20"
+                className="w-full text-base py-6 bg-primary hover:bg-primary/90 shadow-lg shadow-primary/20 font-bold tracking-wide"
                 disabled={isSubmitting}
               >
-                {isSubmitting ? "Registering..." : "Register for Free"}
+                {isSubmitting ? "SECURING YOUR SPOT..." : "SECURE MY SPOT"}
               </Button>
 
               <p className="text-xs text-center text-muted-foreground">
