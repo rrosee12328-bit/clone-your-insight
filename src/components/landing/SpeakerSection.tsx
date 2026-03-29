@@ -16,8 +16,8 @@ const SpeakerSection = () => (
       <p className="text-cta font-bold uppercase tracking-wider text-sm text-center mb-2">Meet Your Host</p>
       <h2 className="text-3xl sm:text-5xl font-bold text-center mb-12">RICKY ROSE</h2>
 
-      <div className="grid md:grid-cols-[1fr_auto_1fr] gap-8 items-center">
-        {/* Headshot */}
+      <div className="grid gap-8 items-center md:grid-cols-[1fr_0.9fr_1fr]">
+        {/* Left photo (switched): speaking */}
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -29,6 +29,7 @@ const SpeakerSection = () => (
             src={rickySpeaking}
             alt="Ricky Rose speaking on stage"
             className="w-full h-full object-cover object-[center_15%]"
+            loading="lazy"
           />
         </motion.div>
 
@@ -43,7 +44,7 @@ const SpeakerSection = () => (
           </p>
         </div>
 
-        {/* Speaking photo */}
+        {/* Right photo (switched): headshot */}
         <motion.div
           initial={{ opacity: 0, x: 20 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -55,6 +56,7 @@ const SpeakerSection = () => (
             src={rickyHeadshot}
             alt="Ricky Rose headshot"
             className="w-full h-full object-cover object-top"
+            loading="lazy"
           />
         </motion.div>
       </div>
