@@ -18,9 +18,9 @@ const SolutionSection = () => {
         className="relative max-w-3xl mx-auto text-center"
       >
         <h2 className="text-3xl sm:text-5xl font-bold mb-6 leading-tight">
-          Full access to my proven Clone Framework will show you how to{" "}
-          <span className="text-primary">turn what you already know into content, clients, and cash</span>{" "}
-          — without working more hours.
+          This is the framework that finally makes AI work for you —{" "}
+          <span className="text-primary">turning your existing knowledge into a system that creates content, attracts clients, and generates income</span>{" "}
+          while you focus on what matters.
         </h2>
 
         <Button
