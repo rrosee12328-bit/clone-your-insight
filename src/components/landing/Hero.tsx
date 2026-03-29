@@ -58,6 +58,10 @@ const Hero = () => {
             Live Masterclass Reveals
           </motion.p>
 
+          <p className="text-xs sm:text-sm md:text-base italic text-muted-foreground/80 max-w-xl mx-auto md:mx-0 mb-3 sm:mb-4 leading-relaxed">
+            Every week there's a new AI tool. Every day something changes. And somehow you're still not seeing real results from any of it.
+          </p>
+
           <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold leading-[1.1] tracking-tight mb-3 sm:mb-4">
             CLONE YOURSELF
           </h1>
