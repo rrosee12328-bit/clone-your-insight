@@ -24,10 +24,10 @@ const SpeakerSection = () => (
           <h3 className="text-2xl font-bold mb-1">Ricky Rose</h3>
           <p className="text-primary font-medium mb-4">CEO of Vektiss · AI Strategy Expert</p>
           <p className="text-muted-foreground leading-relaxed">
-            With over a decade of experience helping professionals and creators leverage technology,
-            Ricky Rose has guided thousands of people through their AI journey. As CEO of Vektiss,
-            his unique approach focuses on building on what you already know — not starting from scratch.
-            He believes everyone has expertise worth multiplying, and AI is the tool to do it.
+            Ricky Rose is the CEO of Vektiss, a company focused on helping businesses and experts use AI to create leverage, simplify operations, and grow with greater clarity. With over a decade of experience in content, strategy, and digital systems, Ricky helps people turn what they already know into assets that can scale.
+          </p>
+          <p className="text-muted-foreground leading-relaxed mt-3">
+            His approach is simple: AI works best when it builds on the knowledge, skill, and experience you already have. Instead of starting from scratch, Ricky teaches entrepreneurs, creators, and service providers how to use AI to multiply their message, streamline their workflow, and create new opportunities for growth.
           </p>
         </div>
       </div>
