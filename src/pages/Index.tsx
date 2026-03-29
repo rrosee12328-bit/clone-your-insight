@@ -1,6 +1,6 @@
 import StickyNav from "@/components/landing/StickyNav";
 import Hero from "@/components/landing/Hero";
-import ProblemSection from "@/components/landing/ProblemSection";
+
 import SolutionSection from "@/components/landing/SolutionSection";
 import WhatYoullLearn from "@/components/landing/WhatYoullLearn";
 import SpeakerSection from "@/components/landing/SpeakerSection";
@@ -14,7 +14,6 @@ const Index = () => (
   <div className="min-h-screen bg-background">
     <StickyNav />
     <Hero />
-    <SolutionSection />
     <SolutionSection />
     <CTABreak heading="Don't Miss This Free Masterclass" />
     <WhatYoullLearn />
