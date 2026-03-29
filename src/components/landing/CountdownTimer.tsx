@@ -6,7 +6,11 @@ interface TimeUnit {
   label: string;
 }
 
-const CountdownTimer = () => {
+interface CountdownTimerProps {
+  compact?: boolean;
+}
+
+const CountdownTimer = ({ compact = false }: CountdownTimerProps) => {
   const [timeLeft, setTimeLeft] = useState<TimeUnit[]>([]);
 
   useEffect(() => {
@@ -38,6 +42,24 @@ const CountdownTimer = () => {
     return () => clearInterval(interval);
   }, []);
 
+  if (compact) {
+    return (
+      <div className="flex gap-2 items-center">
+        {timeLeft.map((unit, i) => (
+          <div key={unit.label} className="flex items-center gap-1">
+            <span className="text-sm font-bold font-mono text-cta tabular-nums">
+              {String(unit.value).padStart(2, "0")}
+            </span>
+            <span className="text-xs text-muted-foreground lowercase">{unit.label}</span>
+            {i < timeLeft.length - 1 && (
+              <span className="text-muted-foreground mx-0.5">·</span>
+            )}
+          </div>
+        ))}
+      </div>
+    );
+  }
+
   return (
     <div className="flex gap-3 sm:gap-4 justify-center">
       {timeLeft.map((unit) => (
@@ -45,7 +67,7 @@ const CountdownTimer = () => {
           key={unit.label}
           className="flex flex-col items-center bg-secondary/50 border border-border rounded-lg px-3 py-2 sm:px-5 sm:py-3 min-w-[64px] sm:min-w-[80px] backdrop-blur-sm"
         >
-          <span className="text-2xl sm:text-4xl font-bold font-mono text-primary tabular-nums">
+          <span className="text-2xl sm:text-4xl font-bold font-mono text-cta tabular-nums">
             {String(unit.value).padStart(2, "0")}
           </span>
           <span className="text-xs text-muted-foreground uppercase tracking-wider mt-1">
