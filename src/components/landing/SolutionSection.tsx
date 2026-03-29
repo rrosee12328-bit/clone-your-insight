@@ -19,7 +19,8 @@ const SolutionSection = () => {
       >
         <h2 className="text-3xl sm:text-5xl font-bold mb-6 leading-tight">
           Full access to my proven Clone Framework will show you how to{" "}
-          <span className="text-primary">multiply your expertise with AI</span>
+          <span className="text-primary">turn what you already know into content, clients, and cash</span>{" "}
+          — without working more hours.
         </h2>
 
         <Button
