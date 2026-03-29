@@ -50,7 +50,7 @@ const PrivacyPolicy = () => (
         <p>We implement appropriate technical and organizational measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction.</p>
 
         <h2>8. Contact Us</h2>
-        <p>If you have any questions about this Privacy Policy, please contact us at <a href="mailto:privacy@cloneyourself.ai" className="text-primary hover:underline">privacy@cloneyourself.ai</a>.</p>
+        <p>If you have any questions about this Privacy Policy, please contact us at <a href="mailto:info@vektiss.com" className="text-primary hover:underline">info@vektiss.com</a>.</p>
       </div>
     </div>
   </div>
