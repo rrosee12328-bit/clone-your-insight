@@ -1,25 +1,25 @@
 import { motion } from "framer-motion";
 
-const lies = [
+const mistakes = [
   {
     number: "01",
-    title: "You Need to Be Technical to Use AI.",
+    title: "Thinking you need to be \"tech-savvy\" to build real AI systems.",
   },
   {
     number: "02",
-    title: "AI Will Replace What You Do.",
+    title: "Believing you don't have enough time to learn AI. (You don't have time not to.)",
   },
   {
     number: "03",
-    title: "You Have to Start from Scratch.",
+    title: "Letting AI make you sound generic, robotic, and nothing like yourself.",
   },
   {
     number: "04",
-    title: "More Tools = Better Results.",
+    title: "Waiting until you're \"ready\" or have \"more money\" to start building.",
   },
   {
     number: "05",
-    title: "It's Too Late to Get Started.",
+    title: "Using ChatGPT without a system and wondering why it is not working.",
   },
 ];
 
@@ -33,11 +33,11 @@ const WhatYoullLearn = () => (
         transition={{ duration: 0.6 }}
         className="text-center mb-16"
       >
-        <h2 className="text-3xl sm:text-5xl font-bold">What You'll Learn In This Webinar:</h2>
+        <h2 className="text-3xl sm:text-5xl font-bold">What You'll Learn In This Masterclass:</h2>
       </motion.div>
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {lies.map((item, i) => (
+        {mistakes.map((item, i) => (
           <motion.div
             key={item.number}
             initial={{ opacity: 0, y: 20 }}

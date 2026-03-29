@@ -15,6 +15,6 @@ export function getNextWebinarDate(): Date {
 
 export const WEBINAR_DATE = getNextWebinarDate();
 
-export const WEBINAR_TITLE = "Clone Yourself with AI";
-export const WEBINAR_SUBTITLE = "How to Leverage What You Already Know — Without the Overwhelm";
+export const WEBINAR_TITLE = "CLONE YOURSELF: 5 Costly AI Mistakes That Are Costing You Time, Money, and Opportunity";
+export const WEBINAR_SUBTITLE = "Whether you're building a business, growing a brand, or trying to turn what you know into income — this live training reveals the 5 common AI mistakes holding you back and shows you the exact framework to multiply what you already have into real results.";
 export const WEBINAR_DURATION_MINUTES = 90;
