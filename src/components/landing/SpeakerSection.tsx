@@ -26,9 +26,9 @@ const SpeakerSection = () => (
           className="rounded-2xl overflow-hidden shadow-2xl shadow-black/50 aspect-[3/4] max-h-[500px]"
         >
           <img
-            src={rickyHeadshot}
-            alt="Ricky Rose headshot"
-            className="w-full h-full object-cover object-top"
+            src={rickySpeaking}
+            alt="Ricky Rose speaking on stage"
+            className="w-full h-full object-cover object-[center_15%]"
           />
         </motion.div>
 
@@ -52,9 +52,9 @@ const SpeakerSection = () => (
           className="rounded-2xl overflow-hidden shadow-2xl shadow-black/50 aspect-[3/4] max-h-[500px]"
         >
           <img
-            src={rickySpeaking}
-            alt="Ricky Rose speaking on stage"
-            className="w-full h-full object-cover object-[center_15%]"
+            src={rickyHeadshot}
+            alt="Ricky Rose headshot"
+            className="w-full h-full object-cover object-top"
           />
         </motion.div>
       </div>
