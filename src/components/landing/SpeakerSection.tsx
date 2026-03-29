@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import rickyPhoto from "@/assets/ricky-rose.jpg";
 
 const SpeakerSection = () => (
   <section className="py-20 sm:py-28 px-4 relative">
