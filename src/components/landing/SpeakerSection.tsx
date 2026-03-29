@@ -17,7 +17,7 @@ const SpeakerSection = () => (
       <div className="flex flex-col md:flex-row items-center gap-8 p-8 rounded-xl border border-border bg-card/50 backdrop-blur-sm">
         {/* Photo placeholder — upload your headshot to replace */}
         <div className="w-40 h-40 rounded-full flex-shrink-0 border-2 border-primary/20 overflow-hidden">
-          <img src={rickyPhoto} alt="Ricky Rose, CEO of Vektiss" className="w-full h-full object-cover object-[center_15%]" />
+          <img src={rickyPhoto} alt="Ricky Rose, CEO of Vektiss" className="w-full h-full object-cover object-[center_10%] scale-150" />
         </div>
 
         <div>
