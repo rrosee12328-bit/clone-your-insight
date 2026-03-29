@@ -228,7 +228,7 @@ const RegistrationForm = () => {
               <Button
                 type="submit"
                 size="lg"
-                className="w-full text-base py-6 bg-primary hover:bg-primary/90 shadow-lg shadow-primary/20 font-bold tracking-wide"
+                className="w-full text-base py-6 bg-cta text-cta-foreground hover:bg-cta/90 shadow-lg shadow-cta/20 font-bold tracking-wide hover:scale-[1.01] transition-all"
                 disabled={isSubmitting}
               >
                 {isSubmitting ? "SECURING YOUR SPOT..." : "SECURE MY SPOT"}
