@@ -44,7 +44,6 @@ const Hero = () => {
 
         <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold leading-tight tracking-tight mb-6">
           {WEBINAR_TITLE}
-          <span className="block text-primary mt-2">with AI</span>
         </h1>
 
         <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto mb-8 leading-relaxed">
