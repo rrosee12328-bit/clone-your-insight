@@ -16,11 +16,7 @@ const Hero = () => {
     day: "numeric",
   });
 
-  const formattedTime = WEBINAR_DATE.toLocaleTimeString("en-US", {
-    hour: "numeric",
-    minute: "2-digit",
-    timeZoneName: "short",
-  });
+  const formattedTime = "7:00 PM CST";
 
   return (
     <section className="relative min-h-screen flex items-center pt-16 px-4 overflow-hidden">
