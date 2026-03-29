@@ -44,7 +44,7 @@ const TermsOfService = () => (
         <p>We reserve the right to modify these terms at any time. Changes will be effective immediately upon posting to this page. Your continued use of the service constitutes acceptance of the updated terms.</p>
 
         <h2>8. Contact</h2>
-        <p>For questions about these terms, contact us at <a href="mailto:legal@cloneyourself.ai" className="text-primary hover:underline">legal@cloneyourself.ai</a>.</p>
+        <p>For questions about these terms, contact us at <a href="mailto:info@vektiss.com" className="text-primary hover:underline">info@vektiss.com</a>.</p>
       </div>
     </div>
   </div>
