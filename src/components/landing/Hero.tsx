@@ -62,11 +62,15 @@ const Hero = () => {
             Free Live Masterclass Reveals
           </motion.p>
 
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] tracking-tight mb-6">
-            {WEBINAR_TITLE}
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-[1.1] tracking-tight mb-4">
+            CLONE YOURSELF
           </h1>
 
-          <p className="text-lg sm:text-xl text-muted-foreground max-w-xl mb-8 leading-relaxed">
+          <p className="text-xl sm:text-2xl md:text-3xl font-bold text-primary leading-snug mb-6 max-w-xl">
+            5 Costly AI Mistakes That Are Costing You Time, Money, and Opportunity
+          </p>
+
+          <p className="text-base sm:text-lg text-muted-foreground max-w-xl mb-8 leading-relaxed">
             {WEBINAR_SUBTITLE}
           </p>
 
