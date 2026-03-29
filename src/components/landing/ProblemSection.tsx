@@ -10,13 +10,11 @@ const ProblemSection = () => (
         transition={{ duration: 0.6 }}
       >
         <h2 className="text-3xl sm:text-5xl font-bold mb-6">
-          5 Lies Holding You Back from{" "}
-          <span className="text-primary">Leveraging AI</span>
+          5 Costly AI Mistakes That Are{" "}
+          <span className="text-primary">Costing You Time, Money, and Opportunity</span>
         </h2>
         <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-          Whether you're building a business, creating content, or scaling your expertise,
-          this Masterclass reveals the 5 common lies keeping you stuck and gives you the
-          framework to break through.
+          Whether you're building a business, growing a brand, or trying to turn what you know into income — this live training reveals the 5 common AI mistakes holding you back and shows you the exact framework to multiply what you already have into real results.
         </p>
       </motion.div>
     </div>
