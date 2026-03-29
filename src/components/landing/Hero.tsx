@@ -37,7 +37,7 @@ const Hero = () => {
         >
           <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-black/50 aspect-[3/4] max-h-[600px]">
             <img
-              src="/lovable-uploads/fa6bfa1f-4373-468a-aa13-3b0369f2fc73.jpg"
+              src={rickyPhoto}
               alt="Ricky Rose, CEO of Vektiss"
               className="w-full h-full object-cover object-[center_15%]"
             />
