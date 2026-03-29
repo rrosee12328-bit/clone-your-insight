@@ -15,10 +15,8 @@ const Index = () => (
     <StickyNav />
     <Hero />
     <WhatYoullLearn />
-    <CTABreak heading="Don't Miss This Free Masterclass" />
     <SolutionSection />
     <SpeakerSection />
-    <CTABreak heading="Reserve Your Seat Now!" subtext="Limited spots — secure yours today" />
     <RegistrationForm />
     <FAQSection />
     <CTABreak heading="Ready to Clone Yourself with AI?" />
