@@ -55,7 +55,7 @@ const Hero = () => {
             transition={{ delay: 0.2 }}
             className="text-cta font-bold uppercase tracking-wider text-xs sm:text-sm mb-3 sm:mb-4"
           >
-            Free Live Masterclass Reveals
+            Live Masterclass Reveals
           </motion.p>
 
           <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold leading-[1.1] tracking-tight mb-3 sm:mb-4">

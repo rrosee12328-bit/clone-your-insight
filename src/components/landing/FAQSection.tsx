@@ -8,8 +8,8 @@ import {
 
 const faqs = [
   {
-    q: "Is this webinar really free?",
-    a: "Yes, 100% free. No credit card required. Just sign up and show up.",
+    q: "Is there a cost to attend?",
+    a: "No credit card required. Just sign up and show up.",
   },
   {
     q: "Do I need any technical skills?",
