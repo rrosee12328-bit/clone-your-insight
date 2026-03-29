@@ -16,21 +16,6 @@ const SpeakerSection = () => (
       <h2 className="text-3xl sm:text-5xl font-bold text-center mb-12">RICKY ROSE</h2>
 
       <div className="grid md:grid-cols-2 gap-8 items-center">
-        {/* Photo */}
-        <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="rounded-2xl overflow-hidden shadow-2xl shadow-black/50 aspect-[3/4] max-h-[500px]"
-        >
-          <img
-            src={rickyPhoto}
-            alt="Ricky Rose, CEO of Vektiss"
-            className="w-full h-full object-cover object-[center_15%]"
-          />
-        </motion.div>
-
         {/* Bio */}
         <div>
           <p className="text-cta font-semibold text-lg mb-4">CEO of Vektiss · AI Strategy Expert</p>
