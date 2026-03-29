@@ -17,7 +17,7 @@ const SolutionSection = () => {
         transition={{ duration: 0.6 }}
         className="relative max-w-3xl mx-auto text-center"
       >
-        <h2 className="text-3xl sm:text-5xl font-bold mb-6 leading-tight">
+        <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-6 leading-tight">
           This is the framework that finally makes AI work for you —{" "}
           <span className="text-primary">turning your existing knowledge into a system that creates content, attracts clients, and generates income</span>{" "}
           while you focus on what matters.
@@ -26,7 +26,7 @@ const SolutionSection = () => {
         <Button
           onClick={scrollToRegistration}
           size="lg"
-          className="bg-cta text-cta-foreground hover:bg-cta/90 text-lg px-10 py-7 font-bold shadow-lg shadow-primary/20 hover:scale-[1.02] transition-all"
+          className="bg-cta text-cta-foreground hover:bg-cta/90 text-base sm:text-lg px-8 sm:px-10 py-6 sm:py-7 font-bold shadow-lg shadow-primary/20 hover:scale-[1.02] transition-all w-full sm:w-auto"
         >
           Register My Seat Now
         </Button>
