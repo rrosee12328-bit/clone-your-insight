@@ -38,7 +38,7 @@ const SpeakerSection = () => (
           <img
             src={rickySpeaking}
             alt="Ricky Rose speaking on stage"
-            className="w-full h-full object-cover object-[70%_15%]"
+            className="w-full h-full object-cover object-[30%_15%]"
             loading="lazy"
           />
         </motion.div>
