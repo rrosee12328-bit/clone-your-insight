@@ -17,7 +17,7 @@ const SpeakerSection = () => (
 
       <div className="grid md:grid-cols-2 gap-6 sm:gap-8 items-center">
         {/* Bio */}
-        <div>
+        <div className="order-2 md:order-1">
           <p className="text-cta font-semibold text-base sm:text-lg mb-4">CEO of Vektiss · AI Strategy Expert</p>
           <p className="text-muted-foreground leading-relaxed text-base sm:text-lg mb-4">
             Ricky Rose is the CEO of Vektiss and helps businesses, creators, and experts use AI with clarity, purpose, and wisdom. With over a decade of experience in content, strategy, and digital systems, he helps people turn what they already know into scalable assets, simpler workflows, and new growth opportunities.
@@ -33,7 +33,7 @@ const SpeakerSection = () => (
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="rounded-2xl overflow-hidden shadow-2xl shadow-black/50 aspect-[3/4] max-h-[500px]"
+          className="order-1 md:order-2 rounded-2xl overflow-hidden shadow-2xl shadow-black/50 aspect-[3/4] max-h-[400px] sm:max-h-[500px] mx-auto max-w-[320px] md:max-w-none"
         >
           <img
             src={rickySpeaking}
