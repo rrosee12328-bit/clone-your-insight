@@ -1,8 +1,8 @@
 import { motion } from "framer-motion";
-import { ArrowDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import CountdownTimer from "./CountdownTimer";
 import { WEBINAR_TITLE, WEBINAR_SUBTITLE, WEBINAR_DATE } from "@/lib/constants";
+import rickyPhoto from "@/assets/ricky-rose.jpg";
 
 const Hero = () => {
   const scrollToRegistration = () => {
@@ -23,48 +23,85 @@ const Hero = () => {
   });
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center px-4 overflow-hidden">
-      {/* Subtle gradient orb */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-primary/10 blur-[120px] pointer-events-none" />
+    <section className="relative min-h-screen flex items-center pt-16 px-4 overflow-hidden">
+      {/* Background gradient */}
+      <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-secondary/30 pointer-events-none" />
 
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
-        className="relative z-10 text-center max-w-4xl mx-auto"
-      >
+      <div className="relative z-10 max-w-7xl mx-auto w-full grid md:grid-cols-2 gap-8 items-center py-12">
+        {/* Photo side */}
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.2 }}
-          className="inline-block mb-6 px-4 py-1.5 rounded-full border border-primary/30 bg-primary/5 text-primary text-sm font-medium"
+          initial={{ opacity: 0, x: -30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="relative order-2 md:order-1"
         >
-          Free Live Webinar · {formattedDate}
+          <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-black/50 aspect-[3/4] max-h-[600px]">
+            <img
+              src={rickyPhoto}
+              alt="Ricky Rose, CEO of Vektiss"
+              className="w-full h-full object-cover object-[center_15%]"
+            />
+            {/* Gradient overlay at bottom */}
+            <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-background/80 to-transparent" />
+          </div>
         </motion.div>
 
-        <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold leading-tight tracking-tight mb-6">
-          {WEBINAR_TITLE}
-        </h1>
-
-        <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto mb-8 leading-relaxed">
-          {WEBINAR_SUBTITLE}
-        </p>
-
-        <div className="mb-10">
-          <p className="text-sm text-muted-foreground mb-3">Webinar starts in:</p>
-          <CountdownTimer />
-          <p className="text-sm text-muted-foreground mt-3">{formattedTime}</p>
-        </div>
-
-        <Button
-          onClick={scrollToRegistration}
-          size="lg"
-          className="text-base px-8 py-6 bg-primary hover:bg-primary/90 shadow-lg shadow-primary/20 transition-all hover:shadow-primary/30"
+        {/* Content side */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="order-1 md:order-2 text-center md:text-left"
         >
-          Reserve Your Seat
-          <ArrowDown className="ml-2 h-4 w-4" />
-        </Button>
-      </motion.div>
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.2 }}
+            className="text-cta font-bold uppercase tracking-wider text-sm mb-4"
+          >
+            Masterclass Reveals
+          </motion.p>
+
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] tracking-tight mb-6">
+            {WEBINAR_TITLE}
+          </h1>
+
+          <p className="text-lg sm:text-xl text-muted-foreground max-w-xl mb-8 leading-relaxed">
+            {WEBINAR_SUBTITLE}
+          </p>
+
+          <div className="flex flex-col sm:flex-row items-center md:items-start gap-2 text-sm text-muted-foreground mb-4">
+            <span className="flex items-center gap-1.5">
+              <span className="text-cta">📅</span>
+              <span className="font-semibold text-foreground">{formattedDate}</span>
+            </span>
+            <span className="hidden sm:block">·</span>
+            <span className="flex items-center gap-1.5">
+              <span className="text-cta">🕐</span>
+              <span className="font-semibold text-foreground">{formattedTime}</span>
+            </span>
+          </div>
+
+          <div className="mb-8">
+            <CountdownTimer />
+          </div>
+
+          <Button
+            onClick={scrollToRegistration}
+            size="lg"
+            className="bg-cta text-cta-foreground hover:bg-cta/90 text-lg px-10 py-7 font-bold shadow-xl shadow-cta/20 transition-all hover:shadow-cta/30 hover:scale-[1.02]"
+          >
+            Register My Seat Now
+          </Button>
+          <p className="text-sm text-muted-foreground mt-3 md:text-left text-center">
+            Limited seats available
+          </p>
+
+          <p className="text-sm text-muted-foreground mt-6">
+            Presented by <span className="text-cta font-semibold">Ricky Rose</span>
+          </p>
+        </motion.div>
+      </div>
     </section>
   );
 };
