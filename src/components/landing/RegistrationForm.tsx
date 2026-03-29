@@ -7,7 +7,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { toast } from "sonner";
 
@@ -153,21 +153,20 @@ const RegistrationForm = () => {
                 control={form.control}
                 name="focus"
                 render={({ field }) => (
-                  <FormItem className="space-y-3">
+                  <FormItem>
                     <FormLabel>What is your main focus right now? *</FormLabel>
-                    <FormControl>
-                      <RadioGroup onValueChange={field.onChange} value={field.value} className="space-y-2">
+                    <Select onValueChange={field.onChange} value={field.value}>
+                      <FormControl>
+                        <SelectTrigger className="bg-secondary/50 border-border">
+                          <SelectValue placeholder="Select your main focus" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
                         {focusOptions.map((option) => (
-                          <label
-                            key={option}
-                            className="flex items-start space-x-3 rounded-lg border border-border p-3 cursor-pointer hover:bg-secondary/30 transition-colors has-[data-state=checked]:border-primary/50 has-[data-state=checked]:bg-primary/5"
-                          >
-                            <RadioGroupItem value={option} className="mt-0.5 shrink-0" />
-                            <span className="text-sm leading-snug">{option}</span>
-                          </label>
+                          <SelectItem key={option} value={option}>{option}</SelectItem>
                         ))}
-                      </RadioGroup>
-                    </FormControl>
+                      </SelectContent>
+                    </Select>
                     <FormMessage />
                   </FormItem>
                 )}
@@ -178,21 +177,20 @@ const RegistrationForm = () => {
                 control={form.control}
                 name="aiLevel"
                 render={({ field }) => (
-                  <FormItem className="space-y-3">
+                  <FormItem>
                     <FormLabel>When it comes to AI, where are you right now? *</FormLabel>
-                    <FormControl>
-                      <RadioGroup onValueChange={field.onChange} value={field.value} className="space-y-2">
+                    <Select onValueChange={field.onChange} value={field.value}>
+                      <FormControl>
+                        <SelectTrigger className="bg-secondary/50 border-border">
+                          <SelectValue placeholder="Select where you are with AI" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
                         {aiLevelOptions.map((option) => (
-                          <label
-                            key={option}
-                            className="flex items-start space-x-3 rounded-lg border border-border p-3 cursor-pointer hover:bg-secondary/30 transition-colors has-[data-state=checked]:border-primary/50 has-[data-state=checked]:bg-primary/5"
-                          >
-                            <RadioGroupItem value={option} className="mt-0.5 shrink-0" />
-                            <span className="text-sm leading-snug">{option}</span>
-                          </label>
+                          <SelectItem key={option} value={option}>{option}</SelectItem>
                         ))}
-                      </RadioGroup>
-                    </FormControl>
+                      </SelectContent>
+                    </Select>
                     <FormMessage />
                   </FormItem>
                 )}
