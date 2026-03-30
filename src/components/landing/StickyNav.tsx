@@ -12,6 +12,7 @@ const StickyNav = () => {
     month: "long",
     day: "numeric",
     year: "numeric",
+    timeZone: "America/Chicago",
   });
 
   return (

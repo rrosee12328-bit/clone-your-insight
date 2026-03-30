@@ -9,12 +9,14 @@ const ThankYou = () => {
     year: "numeric",
     month: "long",
     day: "numeric",
+    timeZone: "America/Chicago",
   });
 
   const formattedTime = WEBINAR_DATE.toLocaleTimeString("en-US", {
     hour: "numeric",
     minute: "2-digit",
     timeZoneName: "short",
+    timeZone: "America/Chicago",
   });
 
   const generateICS = () => {
