@@ -14,6 +14,7 @@ const Hero = () => {
     year: "numeric",
     month: "long",
     day: "numeric",
+    timeZone: "America/Chicago",
   });
 
   const formattedTime = "7:00 PM CST";
