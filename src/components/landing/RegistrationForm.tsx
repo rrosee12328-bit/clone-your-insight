@@ -12,7 +12,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { toast } from "sonner";
 
 const GHL_LOCATION_ID = "M5aYWb66Z8q0IktyodrQ";
-const GHL_API_KEY = "pit-cc54108c-0b10-4c74-9c16-4074df5ec5bb";
+const GHL_API_KEY = "pit-da46b16a-f86d-4fbc-ad2d-22a2bfb00440";
 
 const focusOptions = [
   "Growing my business and getting more clients",
