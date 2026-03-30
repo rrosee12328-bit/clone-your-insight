@@ -11,6 +11,9 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { toast } from "sonner";
 
+const GHL_LOCATION_ID = "M5aYWb66Z8q0IktyodrQ";
+const GHL_API_KEY = "pit-cc54108c-0b10-4c74-9c16-4074df5ec5bb";
+
 const focusOptions = [
   "Growing my business and getting more clients",
   "Creating content and building my audience",
@@ -38,6 +41,38 @@ const formSchema = z.object({
 
 type FormValues = z.infer<typeof formSchema>;
 
+const sendToGoHighLevel = async (data: FormValues) => {
+  const payload = {
+    firstName: data.firstName,
+    lastName: data.lastName,
+    email: data.email,
+    phone: data.phone,
+    locationId: GHL_LOCATION_ID,
+    tags: ["masterclass-registrant"],
+    customFields: [
+      { key: "main_focus", field_value: data.focus },
+      { key: "ai_level", field_value: data.aiLevel },
+    ],
+    source: "clone.vektiss.com",
+  };
+
+  const response = await fetch("https://services.leadconnectorhq.com/contacts/", {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${GHL_API_KEY}`,
+      Version: "2021-07-28",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(payload),
+  });
+
+  if (!response.ok) {
+    const errorText = await response.text();
+    console.error("GHL API error:", response.status, errorText);
+    // Don't throw — we still want to redirect the user even if GHL has a hiccup
+  }
+};
+
 const RegistrationForm = () => {
   const navigate = useNavigate();
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -58,8 +93,8 @@ const RegistrationForm = () => {
   const onSubmit = async (data: FormValues) => {
     setIsSubmitting(true);
     try {
-      console.log("Registration:", data);
-      await new Promise((r) => setTimeout(r, 600));
+      // Send to GoHighLevel CRM
+      await sendToGoHighLevel(data);
       toast.success("You're registered! Check your email for confirmation.");
       navigate("/thank-you");
     } catch {
