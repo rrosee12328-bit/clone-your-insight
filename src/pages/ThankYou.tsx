@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { CheckCircle, Calendar, Share2, Sparkles } from "lucide-react";
+import { CheckCircle, Calendar, Share2, MailWarning } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { WEBINAR_DATE, WEBINAR_TITLE, WEBINAR_DURATION_MINUTES } from "@/lib/constants";
 
@@ -12,12 +12,7 @@ const ThankYou = () => {
     timeZone: "America/Chicago",
   });
 
-  const formattedTime = WEBINAR_DATE.toLocaleTimeString("en-US", {
-    hour: "numeric",
-    minute: "2-digit",
-    timeZoneName: "short",
-    timeZone: "America/Chicago",
-  });
+  const formattedTime = "7:00 PM CST";
 
   const generateICS = () => {
     const start = WEBINAR_DATE.toISOString().replace(/[-:]/g, "").split(".")[0] + "Z";
@@ -105,21 +100,21 @@ const ThankYou = () => {
           </Button>
         </div>
 
-        {/* AI Challenge Teaser */}
+        {/* Spam check reminder */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5 }}
-          className="p-6 rounded-xl border border-primary/20 bg-primary/5"
+          className="p-6 rounded-xl border border-amber-500/20 bg-amber-500/5"
         >
           <div className="flex items-center justify-center gap-2 mb-3">
-            <Sparkles className="w-5 h-5 text-primary" />
-            <h3 className="text-lg font-semibold text-primary">Coming Soon: The AI Challenge</h3>
+            <MailWarning className="w-5 h-5 text-amber-400" />
+            <h3 className="text-lg font-semibold text-amber-400">Don't Miss Your Confirmation</h3>
           </div>
           <p className="text-muted-foreground leading-relaxed">
-            During the webinar, you'll get an exclusive preview of our hands-on AI Challenge —
-            a step-by-step program to build your own AI-powered clone. Stay tuned for a
-            special early-bird offer only available to webinar attendees.
+            Check your <span className="text-foreground font-medium">spam or promotions folder</span> to
+            make sure you received your confirmation email. Add the event to your calendar now so you
+            don't forget — we'll send the webinar link closer to the date!
           </p>
         </motion.div>
       </motion.div>
