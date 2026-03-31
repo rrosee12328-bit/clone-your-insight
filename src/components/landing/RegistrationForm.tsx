@@ -41,6 +41,12 @@ const formSchema = z.object({
 
 type FormValues = z.infer<typeof formSchema>;
 
+const GHL_HEADERS = {
+  Authorization: `Bearer ${GHL_API_KEY}`,
+  Version: "2021-07-28",
+  "Content-Type": "application/json",
+};
+
 const sendToGoHighLevel = async (data: FormValues) => {
   const payload = {
     firstName: data.firstName,
@@ -56,20 +62,80 @@ const sendToGoHighLevel = async (data: FormValues) => {
     source: "clone.vektiss.com",
   };
 
-  const response = await fetch("https://services.leadconnectorhq.com/contacts/", {
+  // Step 1: Try to create the contact
+  const createResponse = await fetch("https://services.leadconnectorhq.com/contacts/", {
     method: "POST",
-    headers: {
-      Authorization: `Bearer ${GHL_API_KEY}`,
-      Version: "2021-07-28",
-      "Content-Type": "application/json",
-    },
+    headers: GHL_HEADERS,
     body: JSON.stringify(payload),
   });
 
-  if (!response.ok) {
-    const errorText = await response.text();
-    console.error("GHL API error:", response.status, errorText);
-    // Don't throw — we still want to redirect the user even if GHL has a hiccup
+  if (createResponse.ok) {
+    // New contact created successfully — workflow will fire automatically via tag
+    return;
+  }
+
+  // Step 2: If creation failed (e.g. duplicate), look up the existing contact by email
+  const lookupResponse = await fetch(
+    `https://services.leadconnectorhq.com/contacts/?locationId=${GHL_LOCATION_ID}&email=${encodeURIComponent(data.email)}`,
+    { headers: GHL_HEADERS }
+  );
+
+  let contactId: string | null = null;
+
+  if (lookupResponse.ok) {
+    const lookupData = await lookupResponse.json();
+    const contacts = lookupData?.contacts ?? [];
+    if (contacts.length > 0) {
+      contactId = contacts[0].id;
+    }
+  }
+
+  // Step 3: If not found by email, try by phone
+  if (!contactId) {
+    const phoneResponse = await fetch(
+      `https://services.leadconnectorhq.com/contacts/?locationId=${GHL_LOCATION_ID}&phone=${encodeURIComponent(data.phone)}`,
+      { headers: GHL_HEADERS }
+    );
+    if (phoneResponse.ok) {
+      const phoneData = await phoneResponse.json();
+      const contacts = phoneData?.contacts ?? [];
+      if (contacts.length > 0) {
+        contactId = contacts[0].id;
+      }
+    }
+  }
+
+  // Step 4: Update the existing contact to add the tag and trigger the workflow
+  if (contactId) {
+    const updatePayload = {
+      firstName: data.firstName,
+      lastName: data.lastName,
+      email: data.email,
+      phone: data.phone,
+      tags: ["masterclass-registrant"],
+      customFields: [
+        { key: "main_focus", field_value: data.focus },
+        { key: "ai_level", field_value: data.aiLevel },
+      ],
+    };
+
+    const updateResponse = await fetch(
+      `https://services.leadconnectorhq.com/contacts/${contactId}`,
+      {
+        method: "PUT",
+        headers: GHL_HEADERS,
+        body: JSON.stringify(updatePayload),
+      }
+    );
+
+    if (!updateResponse.ok) {
+      const errorText = await updateResponse.text();
+      console.error("GHL update error:", updateResponse.status, errorText);
+    }
+  } else {
+    // Log the original error if we couldn't find or update the contact
+    const errorText = await createResponse.text();
+    console.error("GHL API error (could not create or find contact):", createResponse.status, errorText);
   }
 };
 
@@ -93,7 +159,7 @@ const RegistrationForm = () => {
   const onSubmit = async (data: FormValues) => {
     setIsSubmitting(true);
     try {
-      // Send to GoHighLevel CRM
+      // Send to GoHighLevel CRM (creates new or updates existing contact)
       await sendToGoHighLevel(data);
       toast.success("You're registered! Check your email for confirmation.");
       navigate("/thank-you");
