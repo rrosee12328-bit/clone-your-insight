@@ -240,8 +240,30 @@ const RegistrationForm = () => {
                   <FormItem>
                     <FormLabel>Email Address *</FormLabel>
                     <FormControl>
-                      <Input type="email" placeholder="you@example.com" className="bg-secondary/50 border-border" {...field} />
+                      <Input
+                        type="email"
+                        placeholder="you@example.com"
+                        className="bg-secondary/50 border-border"
+                        {...field}
+                        onBlur={(e) => {
+                          field.onBlur();
+                          handleEmailBlur(e.target.value);
+                        }}
+                        onChange={(e) => {
+                          field.onChange(e);
+                          if (emailSuggestion) setEmailSuggestion(null);
+                        }}
+                      />
                     </FormControl>
+                    {emailSuggestion && (
+                      <button
+                        type="button"
+                        onClick={applyEmailSuggestion}
+                        className="text-sm text-amber-400 hover:text-amber-300 transition-colors text-left"
+                      >
+                        Did you mean <span className="font-semibold underline">{emailSuggestion}</span>? Click here to fix it.
+                      </button>
+                    )}
                     <FormMessage />
                   </FormItem>
                 )}
