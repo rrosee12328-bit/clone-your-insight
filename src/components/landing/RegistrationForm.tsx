@@ -143,6 +143,18 @@ const sendToGoHighLevel = async (data: FormValues) => {
 const RegistrationForm = () => {
   const navigate = useNavigate();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [emailSuggestion, setEmailSuggestion] = useState<string | null>(null);
+
+  const handleEmailBlur = useCallback((email: string) => {
+    setEmailSuggestion(detectEmailTypo(email));
+  }, []);
+
+  const applyEmailSuggestion = useCallback(() => {
+    if (emailSuggestion) {
+      form.setValue("email", emailSuggestion, { shouldValidate: true });
+      setEmailSuggestion(null);
+    }
+  }, [emailSuggestion]);
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
