@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
+import { detectEmailTypo } from "@/hooks/use-email-typo";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
@@ -142,6 +143,7 @@ const sendToGoHighLevel = async (data: FormValues) => {
 const RegistrationForm = () => {
   const navigate = useNavigate();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [emailSuggestion, setEmailSuggestion] = useState<string | null>(null);
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
@@ -155,6 +157,17 @@ const RegistrationForm = () => {
       consent: false,
     },
   });
+
+  const handleEmailBlur = useCallback((email: string) => {
+    setEmailSuggestion(detectEmailTypo(email));
+  }, []);
+
+  const applyEmailSuggestion = useCallback(() => {
+    if (emailSuggestion) {
+      form.setValue("email", emailSuggestion, { shouldValidate: true });
+      setEmailSuggestion(null);
+    }
+  }, [emailSuggestion, form]);
 
   const onSubmit = async (data: FormValues) => {
     setIsSubmitting(true);
@@ -227,8 +240,30 @@ const RegistrationForm = () => {
                   <FormItem>
                     <FormLabel>Email Address *</FormLabel>
                     <FormControl>
-                      <Input type="email" placeholder="you@example.com" className="bg-secondary/50 border-border" {...field} />
+                      <Input
+                        type="email"
+                        placeholder="you@example.com"
+                        className="bg-secondary/50 border-border"
+                        {...field}
+                        onBlur={(e) => {
+                          field.onBlur();
+                          handleEmailBlur(e.target.value);
+                        }}
+                        onChange={(e) => {
+                          field.onChange(e);
+                          if (emailSuggestion) setEmailSuggestion(null);
+                        }}
+                      />
                     </FormControl>
+                    {emailSuggestion && (
+                      <button
+                        type="button"
+                        onClick={applyEmailSuggestion}
+                        className="text-sm text-amber-400 hover:text-amber-300 transition-colors text-left"
+                      >
+                        Did you mean <span className="font-semibold underline">{emailSuggestion}</span>? Click here to fix it.
+                      </button>
+                    )}
                     <FormMessage />
                   </FormItem>
                 )}
