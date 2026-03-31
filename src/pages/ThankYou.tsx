@@ -12,12 +12,7 @@ const ThankYou = () => {
     timeZone: "America/Chicago",
   });
 
-  const formattedTime = WEBINAR_DATE.toLocaleTimeString("en-US", {
-    hour: "numeric",
-    minute: "2-digit",
-    timeZoneName: "short",
-    timeZone: "America/Chicago",
-  });
+  const formattedTime = "7:00 PM CST";
 
   const generateICS = () => {
     const start = WEBINAR_DATE.toISOString().replace(/[-:]/g, "").split(".")[0] + "Z";
