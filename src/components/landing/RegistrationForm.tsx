@@ -145,17 +145,6 @@ const RegistrationForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [emailSuggestion, setEmailSuggestion] = useState<string | null>(null);
 
-  const handleEmailBlur = useCallback((email: string) => {
-    setEmailSuggestion(detectEmailTypo(email));
-  }, []);
-
-  const applyEmailSuggestion = useCallback(() => {
-    if (emailSuggestion) {
-      form.setValue("email", emailSuggestion, { shouldValidate: true });
-      setEmailSuggestion(null);
-    }
-  }, [emailSuggestion]);
-
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -168,6 +157,17 @@ const RegistrationForm = () => {
       consent: false,
     },
   });
+
+  const handleEmailBlur = useCallback((email: string) => {
+    setEmailSuggestion(detectEmailTypo(email));
+  }, []);
+
+  const applyEmailSuggestion = useCallback(() => {
+    if (emailSuggestion) {
+      form.setValue("email", emailSuggestion, { shouldValidate: true });
+      setEmailSuggestion(null);
+    }
+  }, [emailSuggestion, form]);
 
   const onSubmit = async (data: FormValues) => {
     setIsSubmitting(true);
