@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { CheckCircle, Calendar, Share2, Sparkles } from "lucide-react";
+import { CheckCircle, Calendar, Share2, MailWarning } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { WEBINAR_DATE, WEBINAR_TITLE, WEBINAR_DURATION_MINUTES } from "@/lib/constants";
 
