@@ -174,6 +174,12 @@ const RegistrationForm = () => {
     try {
       // Send to GoHighLevel CRM (creates new or updates existing contact)
       await sendToGoHighLevel(data);
+
+      // Fire Meta Pixel Lead event
+      if (typeof window !== "undefined" && (window as any).fbq) {
+        (window as any).fbq("track", "Lead");
+      }
+
       toast.success("You're registered! Check your email for confirmation.");
       navigate("/thank-you");
     } catch {
