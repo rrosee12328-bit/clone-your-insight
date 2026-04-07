@@ -1,23 +1,12 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import CountdownTimer from "./CountdownTimer";
-import { WEBINAR_TITLE, WEBINAR_SUBTITLE, WEBINAR_DATE } from "@/lib/constants";
+import { WEBINAR_SUBTITLE } from "@/lib/constants";
 import rickyPhoto from "@/assets/ricky-rose.jpg";
 
 const Hero = () => {
   const scrollToRegistration = () => {
     document.getElementById("register")?.scrollIntoView({ behavior: "smooth" });
   };
-
-  const formattedDate = WEBINAR_DATE.toLocaleDateString("en-US", {
-    weekday: "long",
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-    timeZone: "America/Chicago",
-  });
-
-  const formattedTime = "7:00 PM CST";
 
   return (
     <section className="relative min-h-screen flex items-center pt-14 sm:pt-16 px-4 overflow-hidden">
@@ -74,21 +63,8 @@ const Hero = () => {
             {WEBINAR_SUBTITLE}
           </p>
 
-          <div className="flex flex-col sm:flex-row items-center md:items-start gap-1.5 sm:gap-2 text-sm text-muted-foreground mb-3 sm:mb-4">
-            <span className="flex items-center gap-1.5">
-              <span className="text-cta">📅</span>
-              <span className="font-semibold text-foreground text-xs sm:text-sm">{formattedDate}</span>
-            </span>
-            <span className="hidden sm:block">·</span>
-            <span className="flex items-center gap-1.5">
-              <span className="text-cta">🕐</span>
-              <span className="font-semibold text-foreground text-xs sm:text-sm">{formattedTime}</span>
-            </span>
-          </div>
 
-          <div className="mb-6 sm:mb-8">
-            <CountdownTimer />
-          </div>
+
 
           <Button
             onClick={scrollToRegistration}
