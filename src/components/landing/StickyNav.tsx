@@ -31,7 +31,7 @@ const StickyNav = () => {
             onClick={scrollToRegistration}
             className="bg-cta text-cta-foreground hover:bg-cta/90 font-bold text-sm px-5 py-2 shadow-lg whitespace-nowrap shrink-0"
           >
-            Register My Seat Now
+            Join the Waitlist
           </Button>
         </div>
 
@@ -43,7 +43,7 @@ const StickyNav = () => {
             className="bg-cta text-cta-foreground hover:bg-cta/90 font-bold text-xs px-4 py-1.5 shadow-lg whitespace-nowrap"
             size="sm"
           >
-            Register Now
+            Join Waitlist
           </Button>
         </div>
       </div>
