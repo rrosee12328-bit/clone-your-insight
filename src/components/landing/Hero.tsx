@@ -95,10 +95,10 @@ const Hero = () => {
             size="lg"
             className="bg-cta text-cta-foreground hover:bg-cta/90 text-base sm:text-lg px-8 sm:px-10 py-6 sm:py-7 font-bold shadow-xl shadow-cta/20 transition-all hover:shadow-cta/30 hover:scale-[1.02] w-full sm:w-auto"
           >
-            Register My Seat Now
+            Join the Waitlist
           </Button>
           <p className="text-sm text-muted-foreground mt-3 md:text-left text-center">
-            Limited seats available
+            Limited spots available
           </p>
 
           <p className="text-sm text-muted-foreground mt-4 sm:mt-6">
