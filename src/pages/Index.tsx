@@ -19,7 +19,7 @@ const Index = () => (
     <SpeakerSection />
     <RegistrationForm />
     <FAQSection />
-    <CTABreak heading="Ready to Clone Yourself with AI?" />
+    <CTABreak heading="Ready to Clone Yourself with AI? Join the Waitlist." />
     <Footer />
     <CookieConsent />
   </div>

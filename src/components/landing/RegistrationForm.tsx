@@ -180,7 +180,7 @@ const RegistrationForm = () => {
         (window as any).fbq("track", "Lead");
       }
 
-      toast.success("You're registered! Check your email for confirmation.");
+      toast.success("You're on the waitlist! Check your email for confirmation.");
       navigate("/thank-you");
     } catch {
       toast.error("Something went wrong. Please try again.");
@@ -199,9 +199,9 @@ const RegistrationForm = () => {
         className="max-w-lg mx-auto"
       >
         <div className="text-center mb-8">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4">Reserve Your Spot</h2>
+         <h2 className="text-3xl sm:text-4xl font-bold mb-4">Join the Waitlist</h2>
           <p className="text-muted-foreground text-lg">
-            Seats are limited. Sign up now to save yours.
+            Be the first to know when doors open. Get on the list now.
           </p>
         </div>
 
@@ -373,7 +373,7 @@ const RegistrationForm = () => {
                 className="w-full text-base py-6 bg-cta text-cta-foreground hover:bg-cta/90 shadow-lg shadow-cta/20 font-bold tracking-wide hover:scale-[1.01] transition-all"
                 disabled={isSubmitting}
               >
-                {isSubmitting ? "SECURING YOUR SPOT..." : "SECURE MY SPOT"}
+                {isSubmitting ? "JOINING WAITLIST..." : "JOIN THE WAITLIST"}
               </Button>
 
               <p className="text-xs text-center text-muted-foreground">

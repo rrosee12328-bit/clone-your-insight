@@ -6,7 +6,7 @@ interface CTABreakProps {
   subtext?: string;
 }
 
-const CTABreak = ({ heading = "Reserve Your Seat Now", subtext = "Limited seats available" }: CTABreakProps) => {
+const CTABreak = ({ heading = "Join the Waitlist Now", subtext = "Limited spots available" }: CTABreakProps) => {
   const scrollToRegistration = () => {
     document.getElementById("register")?.scrollIntoView({ behavior: "smooth" });
   };
@@ -24,7 +24,7 @@ const CTABreak = ({ heading = "Reserve Your Seat Now", subtext = "Limited seats 
         size="lg"
         className="bg-cta text-cta-foreground hover:bg-cta/90 text-base px-8 py-6 font-bold shadow-lg shadow-cta/20 hover:scale-[1.02] transition-all"
       >
-        Register My Seat Now
+        Join the Waitlist
       </Button>
       <p className="text-sm text-muted-foreground mt-3">{subtext}</p>
     </motion.section>
