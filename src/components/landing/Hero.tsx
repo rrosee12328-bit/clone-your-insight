@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { BookOpen, Rocket } from "lucide-react";
+import { BookOpen, Cpu } from "lucide-react";
 import rickyPhoto from "@/assets/ricky-rose.jpg";
 
 const Hero = () => {
@@ -47,27 +47,28 @@ const Hero = () => {
           </h1>
 
           <p className="text-base sm:text-lg text-muted-foreground max-w-xl mx-auto md:mx-0 mb-8 leading-relaxed">
-            I create content at the intersection of faith, business, AI, mindset, and communication —
-            helping people grow spiritually, think clearly, and build with leverage.
+            Wisdom for the heart. AI and leverage for the work. I create content at the
+            intersection of faith and business — helping people grow spiritually and build
+            with clarity.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-3 sm:items-center justify-center md:justify-start">
             <Button
-              onClick={() => scrollTo("pathways")}
+              onClick={() => scrollTo("faith")}
               size="lg"
               className="bg-cta text-cta-foreground hover:bg-cta/90 font-bold shadow-xl shadow-cta/20 hover:scale-[1.02] transition-all"
             >
               <BookOpen className="mr-1" />
-              Explore the Bible Side
+              Faith & Wisdom
             </Button>
             <Button
-              onClick={() => scrollTo("pathways")}
+              onClick={() => scrollTo("builder")}
               size="lg"
               variant="outline"
               className="border-primary/40 hover:bg-primary/10 hover:border-primary font-bold"
             >
-              <Rocket className="mr-1" />
-              Explore the Builder Side
+              <Cpu className="mr-1" />
+              AI & Business
             </Button>
           </div>
         </motion.div>

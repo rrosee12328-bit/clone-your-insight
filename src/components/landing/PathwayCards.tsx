@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { BookOpen, Rocket, ArrowRight } from "lucide-react";
+import { BookOpen, Cpu, ArrowRight } from "lucide-react";
 
 const cards = [
   {
@@ -9,19 +9,19 @@ const cards = [
     title: "Faith & Wisdom",
     subtitle: "Bible studies, spiritual growth, and wisdom for the heart.",
     description:
-      "Explore teachings on Scripture, obedience, purpose, guarding your heart, spiritual maturity, and learning how to apply God's Word to everyday life.",
+      "Teachings on Scripture, obedience, purpose, guarding your heart, mindset, emotional patterns, and learning how to apply God's Word to everyday life.",
     cta: "Enter Faith & Wisdom",
-    tags: ["Bible Studies", "Proverbs", "Obedience", "Purpose"],
+    tags: ["Bible Studies", "Mindset", "Purpose", "Wisdom"],
   },
   {
     id: "builder",
-    icon: Rocket,
-    title: "Business & Leverage",
-    subtitle: "AI, content, mindset, and systems for builders.",
+    icon: Cpu,
+    title: "AI & Business",
+    subtitle: "AI, leverage, content, and systems for builders.",
     description:
-      "Explore content on business growth, AI tools, content strategy, personal branding, communication, mindset, and building systems that create leverage.",
-    cta: "Enter Business & Leverage",
-    tags: ["AI", "Content", "Mindset", "Systems"],
+      "Teachings on AI tools and workflows, business strategy, content creation, personal brand, communication, automation, and building offers that create real leverage.",
+    cta: "Enter AI & Business",
+    tags: ["AI", "Business", "Content", "Systems"],
   },
 ];
 
