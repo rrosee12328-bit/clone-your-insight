@@ -1,12 +1,12 @@
 import StickyNav from "@/components/landing/StickyNav";
 import Hero from "@/components/landing/Hero";
-
-import SolutionSection from "@/components/landing/SolutionSection";
-import WhatYoullLearn from "@/components/landing/WhatYoullLearn";
-import SpeakerSection from "@/components/landing/SpeakerSection";
-import CTABreak from "@/components/landing/CTABreak";
-import RegistrationForm from "@/components/landing/RegistrationForm";
-import FAQSection from "@/components/landing/FAQSection";
+import IntroSection from "@/components/landing/IntroSection";
+import PathwayCards from "@/components/landing/PathwayCards";
+import TwoLanesSection from "@/components/landing/TwoLanesSection";
+import CategoriesSection from "@/components/landing/CategoriesSection";
+import LatestContent from "@/components/landing/LatestContent";
+import NewsletterSection from "@/components/landing/NewsletterSection";
+import WorkWithMe from "@/components/landing/WorkWithMe";
 import Footer from "@/components/landing/Footer";
 import CookieConsent from "@/components/landing/CookieConsent";
 
@@ -14,12 +14,13 @@ const Index = () => (
   <div className="min-h-screen bg-background">
     <StickyNav />
     <Hero />
-    <WhatYoullLearn />
-    <SolutionSection />
-    <SpeakerSection />
-    <RegistrationForm />
-    <FAQSection />
-    <CTABreak heading="Ready to Clone Yourself with AI? Join the Waitlist." />
+    <IntroSection />
+    <PathwayCards />
+    <TwoLanesSection />
+    <CategoriesSection />
+    <LatestContent />
+    <NewsletterSection />
+    <WorkWithMe />
     <Footer />
     <CookieConsent />
   </div>
