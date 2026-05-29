@@ -5,7 +5,7 @@ import { Menu, X } from "lucide-react";
 const navLinks = [
   { label: "Home", href: "#top" },
   { label: "Faith & Wisdom", href: "#faith" },
-  { label: "Business & Leverage", href: "#builder" },
+  { label: "AI & Business", href: "#builder" },
   { label: "Newsletter", href: "#newsletter" },
   { label: "YouTube", href: "https://youtube.com", external: true },
   { label: "Work With Me", href: "#work" },

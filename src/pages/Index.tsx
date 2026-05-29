@@ -3,7 +3,6 @@ import Hero from "@/components/landing/Hero";
 import IntroSection from "@/components/landing/IntroSection";
 import PathwayCards from "@/components/landing/PathwayCards";
 import TwoLanesSection from "@/components/landing/TwoLanesSection";
-import CategoriesSection from "@/components/landing/CategoriesSection";
 import LatestContent from "@/components/landing/LatestContent";
 import NewsletterSection from "@/components/landing/NewsletterSection";
 import WorkWithMe from "@/components/landing/WorkWithMe";
@@ -17,7 +16,6 @@ const Index = () => (
     <IntroSection />
     <PathwayCards />
     <TwoLanesSection />
-    <CategoriesSection />
     <LatestContent />
     <NewsletterSection />
     <WorkWithMe />

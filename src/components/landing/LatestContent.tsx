@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Play, ArrowRight, BookOpen, Rocket } from "lucide-react";
+import { Play, ArrowRight, BookOpen, Cpu } from "lucide-react";
 
 const Placeholder = ({ label }: { label: string }) => (
   <div className="aspect-video rounded-lg bg-gradient-to-br from-secondary/80 to-secondary/30 border border-border flex items-center justify-center text-muted-foreground text-xs uppercase tracking-wider">
@@ -56,8 +56,8 @@ const LatestContent = () => (
           className="group rounded-2xl border border-border bg-card/40 p-5 sm:p-6 hover:border-primary/40 transition-all"
         >
           <div className="flex items-center gap-2 text-xs text-primary font-semibold uppercase tracking-wider mb-4">
-            <Rocket className="w-3.5 h-3.5" />
-            Latest Business / AI Teaching
+            <Cpu className="w-3.5 h-3.5" />
+            Latest AI & Business Teaching
           </div>
           <Placeholder label="Cover image" />
           <h3 className="text-xl sm:text-2xl font-bold mt-5 mb-2 group-hover:text-primary transition-colors">
