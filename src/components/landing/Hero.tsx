@@ -59,7 +59,7 @@ const Hero = () => {
               className="bg-cta text-cta-foreground hover:bg-cta/90 font-bold shadow-xl shadow-cta/20 hover:scale-[1.02] transition-all"
             >
               <BookOpen className="mr-1" />
-              Faith & Wisdom
+              Bible Study with Ricky Rose
             </Button>
             <Button
               onClick={() => scrollTo("builder")}
