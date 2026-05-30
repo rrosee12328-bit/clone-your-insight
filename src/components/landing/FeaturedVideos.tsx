@@ -120,6 +120,9 @@ const ShortSkeleton = () => (
 const FeaturedVideos = () => {
   const [videos, setVideos] = useState<YoutubeVideo[]>([]);
   const [shorts, setShorts] = useState<YoutubeVideo[]>([]);
+  const [channel2Name, setChannel2Name] = useState<string>("");
+  const [channel2Videos, setChannel2Videos] = useState<YoutubeVideo[]>([]);
+  const [channel2Shorts, setChannel2Shorts] = useState<YoutubeVideo[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -133,12 +136,19 @@ const FeaturedVideos = () => {
       if (error || !data) {
         setError(error?.message ?? "Failed to load videos");
       } else {
-        // Only filter if durationSeconds is actually provided by the edge function
         const hasDuration = (arr: YoutubeVideo[]) => arr.some((v) => (v.durationSeconds ?? 0) > 0);
-        const videosArr = data.videos ?? [];
-        const shortsArr = data.shorts ?? [];
-        setVideos(hasDuration(videosArr) ? videosArr.filter((v) => (v.durationSeconds ?? 0) > 180) : videosArr);
-        setShorts(hasDuration(shortsArr) ? shortsArr.filter((s) => (s.durationSeconds ?? 0) > 0 && s.durationSeconds <= 180) : shortsArr);
+        const filterLong = (arr: YoutubeVideo[]) =>
+          hasDuration(arr) ? arr.filter((v) => (v.durationSeconds ?? 0) > 180) : arr;
+        const filterShorts = (arr: YoutubeVideo[]) =>
+          hasDuration(arr)
+            ? arr.filter((s) => (s.durationSeconds ?? 0) > 0 && s.durationSeconds <= 180)
+            : arr;
+
+        setVideos(filterLong(data.videos ?? []));
+        setShorts(filterShorts(data.shorts ?? []));
+        setChannel2Name(data.channel2Name ?? "");
+        setChannel2Videos(filterLong(data.channel2Videos ?? []));
+        setChannel2Shorts(filterShorts(data.channel2Shorts ?? []));
       }
       setLoading(false);
     })();
