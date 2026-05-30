@@ -38,6 +38,10 @@ const StickyNav = () => {
       window.open(href, "_blank", "noopener,noreferrer");
       return;
     }
+    if (href.startsWith("/")) {
+      window.location.href = href;
+      return;
+    }
     if (href === "#top") {
       window.scrollTo({ top: 0, behavior: "smooth" });
       return;
