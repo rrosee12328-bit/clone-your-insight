@@ -17,42 +17,46 @@ const formatDuration = (seconds: number) => {
 
 const CHANNEL_URL = "https://www.youtube.com/@BibleStudywithRickyRose";
 
-const VideoCard = ({ video }: { video: YoutubeVideo }) => (
-  <a
-    href={video.videoUrl}
-    target="_blank"
-    rel="noopener noreferrer"
-    className="group block"
-  >
-    <div className="relative aspect-video rounded-lg overflow-hidden border border-border bg-secondary/40">
-      <img
-        src={video.thumbnailUrl}
-        alt={video.title}
-        loading="lazy"
-        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-      />
-      <div className="absolute inset-0 flex items-center justify-center bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity">
-        <Play className="w-10 h-10 text-primary" fill="currentColor" />
+const VideoCard = ({ video }: { video: YoutubeVideo }) => {
+  const url = video.videoUrl || `https://www.youtube.com/watch?v=${video.id}`;
+  return (
+    <a
+      href={url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="group block"
+    >
+      <div className="relative aspect-video rounded-lg overflow-hidden border border-border bg-secondary/40">
+        <img
+          src={video.thumbnailUrl}
+          alt={video.title}
+          loading="lazy"
+          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+        />
+        <div className="absolute inset-0 flex items-center justify-center bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity">
+          <Play className="w-10 h-10 text-primary" fill="currentColor" />
+        </div>
       </div>
-    </div>
-    <p className="text-sm font-semibold mt-3 line-clamp-2 group-hover:text-primary transition-colors">
-      {video.title}
-    </p>
-    <p className="text-xs text-muted-foreground mt-1">
-      {new Date(video.publishedAt).toLocaleDateString(undefined, {
-        year: "numeric",
-        month: "short",
-        day: "numeric",
-      })}
-    </p>
-  </a>
-);
+      <p className="text-sm font-semibold mt-3 line-clamp-2 group-hover:text-primary transition-colors">
+        {video.title}
+      </p>
+      <p className="text-xs text-muted-foreground mt-1">
+        {new Date(video.publishedAt).toLocaleDateString(undefined, {
+          year: "numeric",
+          month: "short",
+          day: "numeric",
+        })}
+      </p>
+    </a>
+  );
+};
 
 const ShortCard = ({ short }: { short: YoutubeVideo }) => {
   const duration = formatDuration(short.durationSeconds);
+  const url = short.shortsUrl || `https://www.youtube.com/shorts/${short.id}`;
   return (
     <a
-      href={short.shortsUrl}
+      href={url}
       target="_blank"
       rel="noopener noreferrer"
       className="group block flex-shrink-0 w-40 sm:w-48"
@@ -112,9 +116,12 @@ const FeaturedVideos = () => {
       if (error || !data) {
         setError(error?.message ?? "Failed to load videos");
       } else {
-        // Defensive: keep long-form (>180s / 3 min) out of shorts and vice versa
-        setVideos((data.videos ?? []).filter((v) => (v.durationSeconds ?? 0) > 180));
-        setShorts((data.shorts ?? []).filter((s) => (s.durationSeconds ?? 0) > 0 && s.durationSeconds <= 180));
+        // Only filter if durationSeconds is actually provided by the edge function
+        const hasDuration = (arr: YoutubeVideo[]) => arr.some((v) => (v.durationSeconds ?? 0) > 0);
+        const videosArr = data.videos ?? [];
+        const shortsArr = data.shorts ?? [];
+        setVideos(hasDuration(videosArr) ? videosArr.filter((v) => (v.durationSeconds ?? 0) > 180) : videosArr);
+        setShorts(hasDuration(shortsArr) ? shortsArr.filter((s) => (s.durationSeconds ?? 0) > 0 && s.durationSeconds <= 180) : shortsArr);
       }
       setLoading(false);
     })();
