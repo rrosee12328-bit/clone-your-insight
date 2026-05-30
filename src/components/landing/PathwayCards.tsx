@@ -6,11 +6,11 @@ const cards = [
   {
     id: "faith",
     icon: BookOpen,
-    title: "Faith & Wisdom",
+    title: "Bible Study with Ricky Rose",
     subtitle: "Bible studies, spiritual growth, and wisdom for the heart.",
     description:
       "Teachings on Scripture, obedience, purpose, guarding your heart, mindset, emotional patterns, and learning how to apply God's Word to everyday life.",
-    cta: "Enter Faith & Wisdom",
+    cta: "Enter Bible Study with Ricky Rose",
     tags: ["Bible Studies", "Mindset", "Purpose", "Wisdom"],
   },
   {

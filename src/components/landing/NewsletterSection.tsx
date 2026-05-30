@@ -12,7 +12,7 @@ import { Mail } from "lucide-react";
 const GHL_LOCATION_ID = "M5aYWb66Z8q0IktyodrQ";
 const GHL_API_KEY = "pit-da46b16a-f86d-4fbc-ad2d-22a2bfb00440";
 
-const categories = ["Faith & Wisdom", "AI & Business"];
+const categories = ["Bible Study with Ricky Rose", "AI & Business"];
 
 const schema = z.object({
   firstName: z.string().trim().min(1, "First name is required").max(100),
