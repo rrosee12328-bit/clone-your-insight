@@ -98,7 +98,7 @@ const ShortSkeleton = () => (
 
 const FeaturedVideos = () => {
   const [videos, setVideos] = useState<YoutubeVideo[]>([]);
-  const [shorts, setShorts] = useState<YoutubeShort[]>([]);
+  const [shorts, setShorts] = useState<YoutubeVideo[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
