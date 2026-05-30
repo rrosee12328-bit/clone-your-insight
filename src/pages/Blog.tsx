@@ -9,11 +9,15 @@ type BlogPost = {
   id: string;
   slug: string;
   blog_title: string;
+  video_title: string | null;
   thumbnail_url: string | null;
   channel_name: string | null;
   published_at: string | null;
   created_at: string;
 };
+
+const stripBold = (text?: string | null) =>
+  text ? text.replace(/\*\*/g, "") : "";
 
 const formatDate = (d?: string | null) =>
   d
@@ -88,7 +92,7 @@ const Blog = () => {
                     </span>
                   )}
                   <h2 className="font-bold text-lg leading-snug group-hover:text-primary transition-colors">
-                    {p.blog_title}
+                    {stripBold(p.video_title ?? p.blog_title)}
                   </h2>
                   <p className="text-xs text-muted-foreground">
                     {formatDate(p.published_at ?? p.created_at)}

@@ -11,6 +11,7 @@ type BlogPost = {
   id: string;
   slug: string;
   blog_title: string;
+  video_title: string | null;
   blog_content: string | null;
   thumbnail_url: string | null;
   channel_name: string | null;
@@ -18,6 +19,9 @@ type BlogPost = {
   published_at: string | null;
   created_at: string;
 };
+
+const stripBold = (text?: string | null) =>
+  text ? text.replace(/\*\*/g, "") : "";
 
 const formatDate = (d?: string | null) =>
   d
@@ -100,7 +104,7 @@ const BlogPost = () => {
                 {formatDate(post.published_at ?? post.created_at)}
               </span>
             </div>
-            <h1 className="text-3xl sm:text-4xl font-bold tracking-tight">{post.blog_title}</h1>
+            <h1 className="text-3xl sm:text-4xl font-bold tracking-tight">{stripBold(post.video_title ?? post.blog_title)}</h1>
             {post.video_url && (
               <Button
                 asChild
