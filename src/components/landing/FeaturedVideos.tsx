@@ -116,9 +116,12 @@ const FeaturedVideos = () => {
       if (error || !data) {
         setError(error?.message ?? "Failed to load videos");
       } else {
-        // Defensive: keep long-form (>180s / 3 min) out of shorts and vice versa
-        setVideos((data.videos ?? []).filter((v) => (v.durationSeconds ?? 0) > 180));
-        setShorts((data.shorts ?? []).filter((s) => (s.durationSeconds ?? 0) > 0 && s.durationSeconds <= 180));
+        // Only filter if durationSeconds is actually provided by the edge function
+        const hasDuration = (arr: YoutubeVideo[]) => arr.some((v) => (v.durationSeconds ?? 0) > 0);
+        const videosArr = data.videos ?? [];
+        const shortsArr = data.shorts ?? [];
+        setVideos(hasDuration(videosArr) ? videosArr.filter((v) => (v.durationSeconds ?? 0) > 180) : videosArr);
+        setShorts(hasDuration(shortsArr) ? shortsArr.filter((s) => (s.durationSeconds ?? 0) > 0 && s.durationSeconds <= 180) : shortsArr);
       }
       setLoading(false);
     })();
