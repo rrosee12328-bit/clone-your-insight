@@ -21,6 +21,7 @@ const navLinks: NavLink[] = [
       { label: "AI & Business", href: "https://www.youtube.com/@Learningwithrickylrose", external: true },
     ],
   },
+  { label: "Blog", href: "/blog" },
   { label: "Work With Me", href: "#work" },
 ];
 
