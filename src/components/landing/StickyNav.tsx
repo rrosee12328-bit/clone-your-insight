@@ -74,12 +74,17 @@ const StickyNav = () => {
                 {ytOpen && (
                   <div className="absolute right-0 top-full pt-2 min-w-[240px]">
                     <div className="rounded-lg border border-border bg-background/95 backdrop-blur-md shadow-lg py-2">
-                      <button
-                        onClick={() => handleClick(link.href, true)}
-                        className="w-full text-left px-4 py-2 text-sm text-muted-foreground hover:text-foreground hover:bg-secondary/60 transition-colors"
+                      <a
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={() => {
+                          setYtOpen(false);
+                        }}
+                        className="block px-4 py-2 text-sm text-muted-foreground hover:text-foreground hover:bg-secondary/60 transition-colors"
                       >
                         Visit YouTube channel
-                      </button>
+                      </a>
                       <div className="my-1 h-px bg-border/60" />
                       {link.children.map((c) => (
                         <button
