@@ -230,9 +230,21 @@ const FeaturedVideos = () => {
         {/* Second channel */}
         {(loading || channel2Videos.length > 0 || channel2Shorts.length > 0) && (
           <div className="mt-20 sm:mt-24">
-            <div className="flex items-center gap-2 text-primary font-semibold uppercase tracking-wider text-xs mb-5">
-              <BookOpen className="w-3.5 h-3.5" />
-              {channel2Name || "Channel 2"}
+            <div className="flex items-center justify-between mb-5 flex-wrap gap-3">
+              <div className="flex items-center gap-2 text-primary font-semibold uppercase tracking-wider text-xs">
+                <BookOpen className="w-3.5 h-3.5" />
+                {channel2Name || "Channel 2"}
+              </div>
+              {channel2Url && (
+                <a
+                  href={channel2Url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center text-sm text-muted-foreground hover:text-primary transition-colors"
+                >
+                  View channel <ArrowRight className="ml-1 w-4 h-4" />
+                </a>
+              )}
             </div>
 
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
