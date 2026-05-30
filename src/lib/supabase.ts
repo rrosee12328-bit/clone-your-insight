@@ -17,3 +17,17 @@ export type YoutubeVideo = {
   publishedAt: string;
   videoUrl: string;
 };
+
+export type YoutubeShort = {
+  id: string;
+  title: string;
+  thumbnailUrl: string;
+  publishedAt: string;
+  shortsUrl: string;
+  duration?: string;
+};
+
+export type YoutubeContentResponse = {
+  videos: YoutubeVideo[];
+  shorts: YoutubeShort[];
+};
