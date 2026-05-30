@@ -112,9 +112,9 @@ const FeaturedVideos = () => {
       if (error || !data) {
         setError(error?.message ?? "Failed to load videos");
       } else {
-        // Defensive: keep long-form (>60s) out of shorts and vice versa
-        setVideos((data.videos ?? []).filter((v) => (v.durationSeconds ?? 0) > 60));
-        setShorts((data.shorts ?? []).filter((s) => (s.durationSeconds ?? 0) > 0 && s.durationSeconds <= 60));
+        // Defensive: keep long-form (>90s) out of shorts and vice versa
+        setVideos((data.videos ?? []).filter((v) => (v.durationSeconds ?? 0) > 90));
+        setShorts((data.shorts ?? []).filter((s) => (s.durationSeconds ?? 0) > 0 && s.durationSeconds <= 90));
       }
       setLoading(false);
     })();
