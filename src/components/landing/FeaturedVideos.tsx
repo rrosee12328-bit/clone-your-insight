@@ -245,6 +245,10 @@ const FeaturedVideos = () => {
                   href={channel2Url}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    (window.top ?? window).location.href = channel2Url;
+                  }}
                   className="inline-flex items-center text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
                   View channel <ArrowRight className="ml-1 w-4 h-4" />
