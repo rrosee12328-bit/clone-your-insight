@@ -17,8 +17,8 @@ const navLinks: NavLink[] = [
     href: "https://www.youtube.com/@BibleStudywithRickyRose",
     external: true,
     children: [
-      { label: "Bible Study with Ricky Rose", href: "#faith" },
-      { label: "AI & Business", href: "#builder" },
+      { label: "Bible Study with Ricky Rose", href: "https://www.youtube.com/@BibleStudywithRickyRose", external: true },
+      { label: "AI & Business", href: "https://www.youtube.com/@Learningwithrickylrose", external: true },
     ],
   },
   { label: "Work With Me", href: "#work" },
@@ -87,13 +87,16 @@ const StickyNav = () => {
                       </a>
                       <div className="my-1 h-px bg-border/60" />
                       {link.children.map((c) => (
-                        <button
+                        <a
                           key={c.label}
-                          onClick={() => handleClick(c.href)}
-                          className="w-full text-left px-4 py-2 text-sm text-muted-foreground hover:text-foreground hover:bg-secondary/60 transition-colors"
+                          href={c.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={() => setYtOpen(false)}
+                          className="block px-4 py-2 text-sm text-muted-foreground hover:text-foreground hover:bg-secondary/60 transition-colors"
                         >
                           {c.label}
-                        </button>
+                        </a>
                       ))}
                     </div>
                   </div>
@@ -156,13 +159,16 @@ const StickyNav = () => {
                         Visit YouTube channel
                       </a>
                       {link.children.map((c) => (
-                        <button
+                        <a
                           key={c.label}
-                          onClick={() => handleClick(c.href)}
-                          className="text-left px-2 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+                          href={c.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={() => setOpen(false)}
+                          className="block text-left px-2 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
                         >
                           {c.label}
-                        </button>
+                        </a>
                       ))}
                     </div>
                   )}
