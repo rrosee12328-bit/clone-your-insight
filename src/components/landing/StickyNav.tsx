@@ -146,12 +146,15 @@ const StickyNav = () => {
                   </button>
                   {mobileYtOpen && (
                     <div className="pl-4 flex flex-col gap-1 border-l border-border/60 ml-2 mb-1">
-                      <button
-                        onClick={() => handleClick(link.href, true)}
-                        className="text-left px-2 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+                      <a
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={() => setOpen(false)}
+                        className="block text-left px-2 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
                       >
                         Visit YouTube channel
-                      </button>
+                      </a>
                       {link.children.map((c) => (
                         <button
                           key={c.label}
