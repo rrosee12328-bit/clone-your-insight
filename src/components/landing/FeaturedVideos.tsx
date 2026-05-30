@@ -53,9 +53,10 @@ const VideoCard = ({ video }: { video: YoutubeVideo }) => {
 
 const ShortCard = ({ short }: { short: YoutubeVideo }) => {
   const duration = formatDuration(short.durationSeconds);
+  const url = short.shortsUrl || `https://www.youtube.com/shorts/${short.id}`;
   return (
     <a
-      href={short.shortsUrl}
+      href={url}
       target="_blank"
       rel="noopener noreferrer"
       className="group block flex-shrink-0 w-40 sm:w-48"
