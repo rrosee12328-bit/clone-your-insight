@@ -113,7 +113,6 @@ const FeaturedVideos = () => {
         "get-youtube-videos",
       );
       if (cancelled) return;
-      console.log("[YouTube] response:", { data, error });
       if (error || !data) {
         setError(error?.message ?? "Failed to load videos");
       } else {
