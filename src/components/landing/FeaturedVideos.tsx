@@ -187,6 +187,11 @@ const FeaturedVideos = () => {
             href={channelUrl || "https://www.youtube.com/@BibleStudywithRickyRose"}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={(e) => {
+              e.preventDefault();
+              const url = channelUrl || "https://www.youtube.com/@BibleStudywithRickyRose";
+              (window.top ?? window).location.href = url;
+            }}
             className="inline-flex items-center text-sm text-muted-foreground hover:text-primary transition-colors"
           >
             View channel <ArrowRight className="ml-1 w-4 h-4" />
