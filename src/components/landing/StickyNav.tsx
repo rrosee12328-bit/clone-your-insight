@@ -159,13 +159,16 @@ const StickyNav = () => {
                         Visit YouTube channel
                       </a>
                       {link.children.map((c) => (
-                        <button
+                        <a
                           key={c.label}
-                          onClick={() => handleClick(c.href)}
-                          className="text-left px-2 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+                          href={c.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={() => setOpen(false)}
+                          className="block text-left px-2 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
                         >
                           {c.label}
-                        </button>
+                        </a>
                       ))}
                     </div>
                   )}
