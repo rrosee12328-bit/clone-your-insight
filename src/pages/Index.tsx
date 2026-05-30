@@ -3,7 +3,7 @@ import Hero from "@/components/landing/Hero";
 import IntroSection from "@/components/landing/IntroSection";
 import PathwayCards from "@/components/landing/PathwayCards";
 import TwoLanesSection from "@/components/landing/TwoLanesSection";
-import LatestContent from "@/components/landing/LatestContent";
+import FeaturedVideos from "@/components/landing/FeaturedVideos";
 import NewsletterSection from "@/components/landing/NewsletterSection";
 import WorkWithMe from "@/components/landing/WorkWithMe";
 import Footer from "@/components/landing/Footer";
@@ -16,7 +16,7 @@ const Index = () => (
     <IntroSection />
     <PathwayCards />
     <TwoLanesSection />
-    <LatestContent />
+    <FeaturedVideos />
     <NewsletterSection />
     <WorkWithMe />
     <Footer />
