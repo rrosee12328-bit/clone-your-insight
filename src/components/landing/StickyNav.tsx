@@ -17,8 +17,8 @@ const navLinks: NavLink[] = [
     href: "https://www.youtube.com/@BibleStudywithRickyRose",
     external: true,
     children: [
-      { label: "Bible Study with Ricky Rose", href: "#faith" },
-      { label: "AI & Business", href: "#builder" },
+      { label: "Bible Study with Ricky Rose", href: "https://www.youtube.com/@BibleStudywithRickyRose", external: true },
+      { label: "AI & Business", href: "https://www.youtube.com/@Learningwithrickylrose", external: true },
     ],
   },
   { label: "Work With Me", href: "#work" },
