@@ -147,7 +147,10 @@ const FeaturedVideos = () => {
 
         setVideos(filterLong(data.videos ?? []));
         setShorts(filterShorts(data.shorts ?? []));
+        setChannelName(data.channelName || "Bible Study with Ricky Rose");
+        setChannelUrl(data.channelUrl || "");
         setChannel2Name(data.channel2Name ?? "");
+        setChannel2Url(data.channel2Url || "");
         setChannel2Videos(filterLong(data.channel2Videos ?? []));
         setChannel2Shorts(filterShorts(data.channel2Shorts ?? []));
       }
