@@ -8,13 +8,13 @@ const LANES = [
     key: "faith" as const,
     label: "Faith & Wisdom",
     Icon: BookOpen,
-    channelUrl: "https://www.youtube.com/@biblestudywithrickyrose",
+    channelUrl: "https://www.youtube.com/@BibleStudywithRickyRose",
   },
   {
     key: "business" as const,
     label: "AI & Business",
     Icon: Cpu,
-    channelUrl: "https://www.youtube.com/@learningwithrickylrose",
+    channelUrl: "https://www.youtube.com/@Learningwithrickylrose",
   },
 ];
 
