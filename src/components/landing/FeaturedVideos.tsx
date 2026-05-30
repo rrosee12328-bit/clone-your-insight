@@ -15,8 +15,6 @@ const formatDuration = (seconds: number) => {
 };
 
 
-const CHANNEL_URL = "https://www.youtube.com/@BibleStudywithRickyRose";
-
 const openExternal = (url: string) => {
   const win = window.open(url, "_blank", "noopener,noreferrer");
   if (!win) {
