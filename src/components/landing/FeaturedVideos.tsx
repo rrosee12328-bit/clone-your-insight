@@ -189,8 +189,11 @@ const FeaturedVideos = () => {
             rel="noopener noreferrer"
             onClick={(e) => {
               e.preventDefault();
-              const url = channelUrl || "https://www.youtube.com/@BibleStudywithRickyRose";
-              (window.top ?? window).location.href = url;
+              window.open(
+                channelUrl || "https://www.youtube.com/@BibleStudywithRickyRose",
+                "_blank",
+                "noopener,noreferrer",
+              );
             }}
             className="inline-flex items-center text-sm text-muted-foreground hover:text-primary transition-colors"
           >
