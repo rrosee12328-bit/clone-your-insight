@@ -12,12 +12,8 @@ export const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
 export type YoutubeVideo = {
   id: string;
   title: string;
-  thumbnail: string;
+  description?: string;
+  thumbnailUrl: string;
   publishedAt: string;
-  url: string;
-};
-
-export type YoutubeVideosResponse = {
-  faith: YoutubeVideo[];
-  business: YoutubeVideo[];
+  videoUrl: string;
 };
