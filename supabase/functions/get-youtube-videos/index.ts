@@ -13,8 +13,8 @@ const corsHeaders = {
 };
 
 const CHANNELS = [
-  { lane: "faith", handle: "BibleStudywithRickyRose" },
-  { lane: "business", handle: "Learningwithrickylrose" },
+  { lane: "faith", handle: "BibleStudywithRickyRose", name: "Bible Study with Ricky Rose" },
+  { lane: "business", handle: "Learningwithrickylrose", name: "AI & Business" },
 ] as const;
 
 const CACHE_TTL_MS = 60 * 60 * 1000; // 1 hour
