@@ -223,6 +223,48 @@ const FeaturedVideos = () => {
           </div>
         </div>
 
+        {/* Second channel */}
+        {(loading || channel2Videos.length > 0 || channel2Shorts.length > 0) && (
+          <div className="mt-20 sm:mt-24">
+            <div className="flex items-center gap-2 text-primary font-semibold uppercase tracking-wider text-xs mb-5">
+              <BookOpen className="w-3.5 h-3.5" />
+              {channel2Name || "Channel 2"}
+            </div>
+
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+              {loading &&
+                Array.from({ length: 3 }).map((_, i) => <VideoSkeleton key={i} />)}
+              {!loading &&
+                channel2Videos.slice(0, 6).map((v) => <VideoCard key={v.id} video={v} />)}
+              {!loading && channel2Videos.length === 0 && !error && (
+                <p className="text-sm text-muted-foreground col-span-full">
+                  No videos available yet.
+                </p>
+              )}
+            </div>
+
+            <div className="mt-12">
+              <div className="flex items-center gap-2 text-primary font-semibold uppercase tracking-wider text-xs mb-5">
+                <Zap className="w-3.5 h-3.5" />
+                Shorts
+              </div>
+              <div className="-mx-4 px-4 overflow-x-auto scrollbar-thin">
+                <div className="flex gap-4 pb-2">
+                  {loading &&
+                    Array.from({ length: 6 }).map((_, i) => <ShortSkeleton key={i} />)}
+                  {!loading &&
+                    channel2Shorts.map((s) => <ShortCard key={s.id} short={s} />)}
+                  {!loading && channel2Shorts.length === 0 && !error && (
+                    <p className="text-sm text-muted-foreground">
+                      No shorts available yet.
+                    </p>
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
         {error && (
           <p className="text-sm text-muted-foreground mt-6">
             Couldn't load videos right now. Try again later.
