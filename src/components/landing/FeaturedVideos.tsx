@@ -72,7 +72,11 @@ const ShortCard = ({ short }: { short: YoutubeVideo }) => {
       href={url}
       target="_blank"
       rel="noopener noreferrer"
-      className="group block flex-shrink-0 w-40 sm:w-48"
+      onClick={(e) => {
+        e.preventDefault();
+        openExternal(url);
+      }}
+      className="group block flex-shrink-0 w-40 sm:w-48 cursor-pointer"
     >
       <div className="relative aspect-[9/16] rounded-lg overflow-hidden border border-border bg-secondary/40">
         <img
