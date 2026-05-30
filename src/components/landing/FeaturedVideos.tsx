@@ -1,12 +1,18 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { Play, BookOpen, ArrowRight, Zap } from "lucide-react";
 import {
   supabase,
   type YoutubeVideo,
-  type YoutubeShort,
   type YoutubeContentResponse,
 } from "@/lib/supabase";
+
+const formatDuration = (seconds: number) => {
+  if (!seconds || seconds < 0) return "";
+  const m = Math.floor(seconds / 60);
+  const s = Math.floor(seconds % 60);
+  return `${m}:${s.toString().padStart(2, "0")}`;
+};
+
 
 const CHANNEL_URL = "https://www.youtube.com/@BibleStudywithRickyRose";
 
