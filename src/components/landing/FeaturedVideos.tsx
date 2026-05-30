@@ -184,7 +184,7 @@ const FeaturedVideos = () => {
             Bible Study with Ricky Rose
           </div>
           <a
-            href={CHANNEL_URL}
+            href={channelUrl || "https://www.youtube.com/@BibleStudywithRickyRose"}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center text-sm text-muted-foreground hover:text-primary transition-colors"
