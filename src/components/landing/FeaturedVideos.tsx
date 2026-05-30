@@ -48,34 +48,38 @@ const VideoCard = ({ video }: { video: YoutubeVideo }) => (
   </a>
 );
 
-const ShortCard = ({ short }: { short: YoutubeShort }) => (
-  <a
-    href={short.shortsUrl}
-    target="_blank"
-    rel="noopener noreferrer"
-    className="group block flex-shrink-0 w-40 sm:w-48"
-  >
-    <div className="relative aspect-[9/16] rounded-lg overflow-hidden border border-border bg-secondary/40">
-      <img
-        src={short.thumbnailUrl}
-        alt={short.title}
-        loading="lazy"
-        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-      />
-      <div className="absolute inset-0 flex items-center justify-center bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity">
-        <Play className="w-8 h-8 text-primary" fill="currentColor" />
+const ShortCard = ({ short }: { short: YoutubeVideo }) => {
+  const duration = formatDuration(short.durationSeconds);
+  return (
+    <a
+      href={short.shortsUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="group block flex-shrink-0 w-40 sm:w-48"
+    >
+      <div className="relative aspect-[9/16] rounded-lg overflow-hidden border border-border bg-secondary/40">
+        <img
+          src={short.thumbnailUrl}
+          alt={short.title}
+          loading="lazy"
+          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+        />
+        <div className="absolute inset-0 flex items-center justify-center bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity">
+          <Play className="w-8 h-8 text-primary" fill="currentColor" />
+        </div>
+        {duration && (
+          <span className="absolute bottom-2 right-2 text-[10px] font-semibold px-1.5 py-0.5 rounded bg-black/80 text-white">
+            {duration}
+          </span>
+        )}
       </div>
-      {short.duration && (
-        <span className="absolute bottom-2 right-2 text-[10px] font-semibold px-1.5 py-0.5 rounded bg-black/80 text-white">
-          {short.duration}
-        </span>
-      )}
-    </div>
-    <p className="text-xs font-semibold mt-2 line-clamp-2 group-hover:text-primary transition-colors">
-      {short.title}
-    </p>
-  </a>
-);
+      <p className="text-xs font-semibold mt-2 line-clamp-2 group-hover:text-primary transition-colors">
+        {short.title}
+      </p>
+    </a>
+  );
+};
+
 
 const VideoSkeleton = () => (
   <div>
