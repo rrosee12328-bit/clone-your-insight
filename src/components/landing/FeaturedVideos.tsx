@@ -17,6 +17,15 @@ const formatDuration = (seconds: number) => {
 
 const CHANNEL_URL = "https://www.youtube.com/@BibleStudywithRickyRose";
 
+const openExternal = (url: string) => {
+  const win = window.open(url, "_blank", "noopener,noreferrer");
+  if (!win) {
+    // Fallback if popups are blocked (e.g. sandboxed preview iframe)
+    if (window.top) window.top.location.href = url;
+    else window.location.href = url;
+  }
+};
+
 const VideoCard = ({ video }: { video: YoutubeVideo }) => {
   const url = video.videoUrl || `https://www.youtube.com/watch?v=${video.id}`;
   return (
@@ -24,7 +33,11 @@ const VideoCard = ({ video }: { video: YoutubeVideo }) => {
       href={url}
       target="_blank"
       rel="noopener noreferrer"
-      className="group block"
+      onClick={(e) => {
+        e.preventDefault();
+        openExternal(url);
+      }}
+      className="group block cursor-pointer"
     >
       <div className="relative aspect-video rounded-lg overflow-hidden border border-border bg-secondary/40">
         <img
