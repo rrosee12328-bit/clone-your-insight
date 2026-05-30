@@ -13,8 +13,8 @@ const corsHeaders = {
 };
 
 const CHANNELS = [
-  { lane: "faith", handle: "BibleStudywithRickyRose" },
-  { lane: "business", handle: "Learningwithrickylrose" },
+  { lane: "faith", handle: "BibleStudywithRickyRose", name: "Bible Study with Ricky Rose" },
+  { lane: "business", handle: "Learningwithrickylrose", name: "AI & Business" },
 ] as const;
 
 const CACHE_TTL_MS = 60 * 60 * 1000; // 1 hour
@@ -84,9 +84,12 @@ Deno.serve(async (req) => {
     }
 
     const result: Record<string, Video[]> = {};
+    const channelMeta: Record<string, { name: string; url: string }> = {};
     const now = Date.now();
 
-    for (const { lane, handle } of CHANNELS) {
+    for (const { lane, handle, name } of CHANNELS) {
+      channelMeta[lane] = { name, url: `https://www.youtube.com/@${handle}` };
+
       const cached = cacheMap.get(lane);
       const isFresh =
         cached && now - new Date(cached.fetched_at).getTime() < CACHE_TTL_MS;
@@ -114,7 +117,16 @@ Deno.serve(async (req) => {
       }
     }
 
-    return json(result);
+    return json({
+      videos: result.faith ?? [],
+      shorts: [],
+      channelName: channelMeta.faith?.name ?? "",
+      channelUrl: channelMeta.faith?.url ?? "",
+      channel2Name: channelMeta.business?.name ?? "",
+      channel2Url: channelMeta.business?.url ?? "",
+      channel2Videos: result.business ?? [],
+      channel2Shorts: [],
+    });
   } catch (e) {
     console.error(e);
     return json({ error: (e as Error).message }, 500);

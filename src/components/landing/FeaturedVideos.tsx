@@ -15,8 +15,6 @@ const formatDuration = (seconds: number) => {
 };
 
 
-const CHANNEL_URL = "https://www.youtube.com/@BibleStudywithRickyRose";
-
 const openExternal = (url: string) => {
   const win = window.open(url, "_blank", "noopener,noreferrer");
   if (!win) {
@@ -120,7 +118,10 @@ const ShortSkeleton = () => (
 const FeaturedVideos = () => {
   const [videos, setVideos] = useState<YoutubeVideo[]>([]);
   const [shorts, setShorts] = useState<YoutubeVideo[]>([]);
+  const [channelName, setChannelName] = useState<string>("Bible Study with Ricky Rose");
+  const [channelUrl, setChannelUrl] = useState<string>("");
   const [channel2Name, setChannel2Name] = useState<string>("");
+  const [channel2Url, setChannel2Url] = useState<string>("");
   const [channel2Videos, setChannel2Videos] = useState<YoutubeVideo[]>([]);
   const [channel2Shorts, setChannel2Shorts] = useState<YoutubeVideo[]>([]);
   const [loading, setLoading] = useState(true);
@@ -146,7 +147,10 @@ const FeaturedVideos = () => {
 
         setVideos(filterLong(data.videos ?? []));
         setShorts(filterShorts(data.shorts ?? []));
+        setChannelName(data.channelName || "Bible Study with Ricky Rose");
+        setChannelUrl(data.channelUrl || "");
         setChannel2Name(data.channel2Name ?? "");
+        setChannel2Url(data.channel2Url || "");
         setChannel2Videos(filterLong(data.channel2Videos ?? []));
         setChannel2Shorts(filterShorts(data.channel2Shorts ?? []));
       }
@@ -177,10 +181,10 @@ const FeaturedVideos = () => {
         <div className="flex items-center justify-between mb-5 flex-wrap gap-3">
           <div className="flex items-center gap-2 text-primary font-semibold uppercase tracking-wider text-xs">
             <BookOpen className="w-3.5 h-3.5" />
-            Bible Study with Ricky Rose
+            {channelName}
           </div>
           <a
-            href={CHANNEL_URL}
+            href={channelUrl || "https://www.youtube.com/@BibleStudywithRickyRose"}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center text-sm text-muted-foreground hover:text-primary transition-colors"
@@ -226,9 +230,21 @@ const FeaturedVideos = () => {
         {/* Second channel */}
         {(loading || channel2Videos.length > 0 || channel2Shorts.length > 0) && (
           <div className="mt-20 sm:mt-24">
-            <div className="flex items-center gap-2 text-primary font-semibold uppercase tracking-wider text-xs mb-5">
-              <BookOpen className="w-3.5 h-3.5" />
-              {channel2Name || "Channel 2"}
+            <div className="flex items-center justify-between mb-5 flex-wrap gap-3">
+              <div className="flex items-center gap-2 text-primary font-semibold uppercase tracking-wider text-xs">
+                <BookOpen className="w-3.5 h-3.5" />
+                {channel2Name || "Channel 2"}
+              </div>
+              {channel2Url && (
+                <a
+                  href={channel2Url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center text-sm text-muted-foreground hover:text-primary transition-colors"
+                >
+                  View channel <ArrowRight className="ml-1 w-4 h-4" />
+                </a>
+              )}
             </div>
 
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">

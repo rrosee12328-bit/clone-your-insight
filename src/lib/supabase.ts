@@ -22,7 +22,10 @@ export type YoutubeVideo = {
 export type YoutubeContentResponse = {
   videos: YoutubeVideo[];
   shorts: YoutubeVideo[];
+  channelName?: string;
+  channelUrl?: string;
   channel2Name?: string;
+  channel2Url?: string;
   channel2Videos?: YoutubeVideo[];
   channel2Shorts?: YoutubeVideo[];
 };
