@@ -250,7 +250,7 @@ const FeaturedVideos = () => {
                   rel="noopener noreferrer"
                   onClick={(e) => {
                     e.preventDefault();
-                    (window.top ?? window).location.href = channel2Url;
+                    window.open(channel2Url, "_blank", "noopener,noreferrer");
                   }}
                   className="inline-flex items-center text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
