@@ -181,7 +181,7 @@ const FeaturedVideos = () => {
         <div className="flex items-center justify-between mb-5 flex-wrap gap-3">
           <div className="flex items-center gap-2 text-primary font-semibold uppercase tracking-wider text-xs">
             <BookOpen className="w-3.5 h-3.5" />
-            Bible Study with Ricky Rose
+            {channelName}
           </div>
           <a
             href={channelUrl || "https://www.youtube.com/@BibleStudywithRickyRose"}
